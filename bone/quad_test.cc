@@ -8,7 +8,7 @@ int main() {
   for (int i = 0; i < 10000; i++) {
 	  Report r = q.getNextReport();
 	  cout << "Report: [";
-          cout << r.cycles;
+          cout << (int)r.cycles;
           cout << "]: ";
 	  for (int j = 0; j < 6; j++) {
 		  cout << j << ":" << r.channel[j].position << " ";
