@@ -4,9 +4,9 @@
 #include "brake.h"
 
 void testMotor(int idx,Motors& m) {
-  m.setPower(idx,5000);
+  m.setPower(idx,50000);
   sleep(1);
-  m.setPower(idx,-5000);
+  m.setPower(idx,-50000);
   sleep(1);
   m.setPower(idx,0);
 }
@@ -15,6 +15,7 @@ int main(int argc, char** argv) {
   Brake b;
   b.setBrake(false);
   Motors m;
+  m.enable(true);
   if (argc < 2) {
     testMotor(0,m);
   } else {
@@ -25,5 +26,6 @@ int main(int argc, char** argv) {
       }
     }
   }
+  m.enable(false);
   b.setBrake(true);
 }
