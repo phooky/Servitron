@@ -50,7 +50,7 @@
                 pinctrl-single,pins = <
                     // Mode is 0x0f: input off, pullup off
                     0x0d0 0xf // P8.35 - BRAKE - lcd_data12     GPIO0_8
-                >'
+                >;
             };
             pruicss_quad_pins: pinmux_pruicss_quad_pins{
                 pinctrl-single,pins = <
@@ -163,13 +163,17 @@
     
     // Brake pin
     fragment@8 {
-        target = <&gpio-leds>;
+        target = <&ocp>;
         __overlay__ {
-            pinctrl-0 = <&brake_pins>;
             brake {
-                label = "servitron:brake";
-                gpios = <&gpio1 8 0>;
-                default-state = "off";
+                compatible = "gpio-leds";
+                pinctrl-names = "default";
+                pinctrl-0 = <&brake_pins>;
+                brake {
+                    label = "servitron:brake";
+                    gpios = <&gpio1 8 0>;
+                    default-state = "off";
+                };
             };
         };
     };
