@@ -58,11 +58,11 @@ Motors::Motors() : m_en(enable_pin)
   m_impl[2] = new MotorImpl("servitron:m2_a",
                             "servitron:m2_b",
                             "servitron:m2_en",
-                            "motor_pwm0b.13");
+                            "motor_pwm0a.12");
   m_impl[3] = new MotorImpl("servitron:m3_a",
                             "servitron:m3_b",
                             "servitron:m3_en",
-                            "motor_pwm0a.12");
+                            "motor_pwm0b.13");
   m_impl[4] = new MotorImpl("servitron:m4_a",
                             "servitron:m4_b",
                             "servitron:m4_en",
