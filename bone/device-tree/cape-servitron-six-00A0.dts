@@ -49,9 +49,9 @@
 
             quad_0{
                 pin-names     = "Servi:q0_a", "Servi:q0_b", "Servi:q0_i";
-                gpios         = <&gpio2 3 0
-                                &gpio2 5 0
-                                &gpio2 4 0>; 
+                gpios         = <&gpio2 3 0x5
+                                &gpio2 5 0x5
+                                &gpio2 4 0x5>; 
             };            
         };
     };
