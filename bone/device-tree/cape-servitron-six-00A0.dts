@@ -2,25 +2,22 @@
 /plugin/;
 
 / {
-    compatible = "ti,beaglebone", "ti,beaglebone-black";
+    compatible = "ti,beaglebone-black";
 
     /* identification */
     part-number = "BB-SERVITRON-SIX";
-    version@00A0 {
-        version = "00A0";
-        dtbo = "cape-servitron-00A0.dtbo"
-    }
+    version = "00A0";
+    dtbo = "cape-servitron-00A0.dtbo";
 
     /* state the resources this cape uses or prepare to get winged! */
     exclusive-use =
         /* Quadrature inputs */
         "P8.8", "P8.9", "P8.10",
-        /*
-        "P8.28", "P8.29", "P8.30",
-        "P8.34", "P8.36", "P8.37",
-        "P8.38", "P8.39", "P8.40",
-        "P8.41", "P8.42", "P8.43",
-        "P8.44", "P8.45", "P8.46",*/
+        /* "P8.28", "P8.29", "P8.30", */
+        /* "P8.34", "P8.36", "P8.37", */
+        /* "P8.38", "P8.39", "P8.40", */
+        /* "P8.41", "P8.42", "P8.43", */
+        /* "P8.44", "P8.45", "P8.46",*/
         /* Enable and direction pins */
         /* Brake */
         /* Estop/power */
