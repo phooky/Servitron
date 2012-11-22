@@ -3,7 +3,9 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#incude <fcntl.h>
+#include <fcntl.h>
+#include <stdint.h>
+#include <assert.h>
 
 #define AM33XX
 
@@ -27,6 +29,11 @@ void main(int argc, char** argv) {
     close(dev_mem_fd);
     assert(0);
   }
+  uint16_t aval = *((uint16_t*)(mapped+EPWM_CMPA));
+  uint16_t bval = *((uint16_t*)(mapped+EPWM_CMPB));
+  uint16_t prd = *((uint16_t*)(mapped+EPWM_TBPRD));
+  printf("PWMS are %d %d out of %d\r\n",aval,bval,prd);
+  *((uint16_t*)(mapped+EPWM_CMPB)) = value;
   munmap(mapped, EPWM_SIZE);
   close(dev_mem_fd);
 }
