@@ -84,6 +84,7 @@ bool PWM::init() {
     shutdown();
     return false;
   }
+  return true;
 }
 
 void PWM::setChannel(int channel, int value) {
