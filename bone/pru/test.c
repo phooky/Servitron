@@ -28,7 +28,7 @@ int main (void)
 
     /* Execute example on PRU */
     printf("\tINFO: Executing example.\r\n");
-    prussdrv_exec_program (PRU_NUM, "./blink.bin");
+    prussdrv_exec_program (PRU_NUM, "./test.bin");
     
     /* Wait until PRU0 has finished execution */
     printf("\tINFO: Waiting for HALT command.\r\n");
