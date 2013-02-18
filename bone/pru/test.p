@@ -16,7 +16,8 @@ START:
 
     MOV r1, 10
 BLINK:
-    MOV r2, 7<<22
+    and r2, r1, 7
+    lsl r2, r2, 22
     MOV r3, GPIO1 | GPIO_SETDATAOUT
     SBBO r2, r3, 0, 4
 
