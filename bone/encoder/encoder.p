@@ -4,11 +4,7 @@
 #define PRU0_ARM_INTERRUPT 19
 #define AM33XX
 
-#define GPIO1 0x4804c000
-#define GPIO_CLEARDATAOUT 0x190
-#define GPIO_SETDATAOUT 0x194
-#define GPIO_OE 0x134
-#define GPIO_DATAIN 0x138
+#include "gpio.h"
 
 START:
 // clear that bit

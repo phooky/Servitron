@@ -13,23 +13,22 @@ LDFLAGS+=-L$(LIBDIR_APP_LOADER) -lprussdrv -lpthread
 ASSEM_FILES=encoder.p
 TARGET=encoder
 OBJ=encoder.o
+BIN=encoder.bin
 
-all: $(TARGET) asm
+all: $(TARGET)
 %.o: %.c $(DEPS)
 	$(CROSS_COMPILE)gcc $(CFLAGS) -c -o $@ $< $(LDFLAGS)
 
-$(TARGET): $(OBJ)
+%.bin: %.p $(DEPS)
+	${PASM} -b $<
+
+
+$(TARGET): $(OBJ) $(BIN)
 	$(CROSS_COMPILE)gcc $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 .PHONY: clean
 
 clean:
 	rm -f *~ *.bin *.o  $(TARGET)
-
-asm: 
-	for a_file in ${ASSEM_FILES} ; \
-	do \
-          ${PASM} -b $$a_file ; \
-	done ; \
 
 
