@@ -15,7 +15,7 @@ TARGET=encoder
 OBJ=encoder.o
 BIN=encoder.bin
 
-all: $(TARGET)
+all: $(TARGET) $(BIN)
 %.o: %.c $(DEPS)
 	$(CROSS_COMPILE)gcc $(CFLAGS) -c -o $@ $< $(LDFLAGS)
 
@@ -23,7 +23,7 @@ all: $(TARGET)
 	${PASM} -b $<
 
 
-$(TARGET): $(OBJ) $(BIN)
+$(TARGET): $(OBJ)
 	$(CROSS_COMPILE)gcc $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 .PHONY: clean
