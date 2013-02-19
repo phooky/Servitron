@@ -6,25 +6,80 @@
 
 #include "gpio.h"
 
+// All quadrature inputs are on port 1
+// Define pins
+// 1_16 - Q1A
+// 1_17 - Q1B
+
+// number of channels
+#define CHANNEL_COUNT 1
+
+// location of channels in memory
+#define CHANNEL_START 0x00
+
+.struct Channel
+    .u32  position
+    .u8   idxA
+    .u8   idxB
+    .u8   idxIdx
+    .u8   state
+.ends
+
+.assign Channel, r20, r21, ch
+
 START:
 // clear that bit
     LBCO r0, C4, 4, 4
     CLR r0, r0, 4
     SBCO r0, C4, 4, 4
 
-// set 16 and 17 as inputs
-    mov r3, GPIO1 | GPIO_OE
-    lbbo r1, r3, 0, 4
-    ldi r2, 3
-    lsl r2, r2, 16
-    or r1, r1, r2
-    sbbo r1, r3, 0, 4
+// initialize channels -- this should be done externally
+    mov r19, CHANNEL_START
+    lbbo ch, r19, 0, SIZE(Channel)
+    mov ch.position, 0
+    mov ch.idxA, 16
+    mov ch.idxB, 17
+    mov ch.idxIdx, 16
+    mov ch.state, 0
+    sbbo ch, r19, 0, SIZE(Channel)
 
-    MOV r1, 0x00f00000
-BLINK:
+// set inputs
+    mov r17, GPIO1 | GPIO_OE
+    lbbo r16, r17, 0, 4  // r16 <- output enable register
+    mov r19, CHANNEL_START
+    mov r18, CHANNEL_COUNT
+init_channel:
+    lbbo ch, r19, 0, SIZE(Channel)
+    set r16, r16, ch.idxA
+    set r16, r16, ch.idxB
+    add r19, r19, SIZE(Channel)
+    sub r18, r18, 1
+    qbne init_channel, r18, 0
+
+// update the output enable register
+    sbbo r16, r17, 0, 4
+
+
+sample_port:
     mov r5, GPIO1 | GPIO_DATAIN
-    lbbo r4, r5, 0, 4
-    lsr r4, r4, 16
+    lbbo r4, r5, 0, 4 // r4 <- data channels
+
+    mov r19, CHANNEL_START
+    mov r18, CHANNEL_COUNT
+process_channel:
+    lbbo ch, r19, 0, SIZE(Channel)
+    mov r15.b0, 0
+    qbbs skip_set_A, r4, ch.idxA
+    set r15.b0, r15.b0, 0
+skip_set_A:
+    qbbs skip_set_B, r4, ch.idxB
+    set r15.b0, r15.b0, 1
+skip_set_B:
+    add r19, r19, SIZE(Channel)
+    sub r18, r18, 1
+    qbne process_channel, r18, 0
+
+    mov r4, r15.b0    
     lsl r2, r4, 23 
     MOV r3, GPIO1 | GPIO_SETDATAOUT
     SBBO r2, r3, 0, 4
@@ -39,7 +94,7 @@ wait:
     mov r3, GPIO1 | GPIO_CLEARDATAOUT
     sbbo r2, r3, 0, 4
     SUB r1, r1, 1
-    QBNE BLINK, r1, 0
+    QBNE sample_port, r1, 0
 
 //#ifdef AM33XX
     // Send notification to Host for program completion
