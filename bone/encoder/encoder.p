@@ -59,6 +59,7 @@ init_channel:
 // update the output enable register
     sbbo r16, r17, 0, 4
 
+    mov r1, 0x00030000
 
 sample_port:
     mov r5, GPIO1 | GPIO_DATAIN
