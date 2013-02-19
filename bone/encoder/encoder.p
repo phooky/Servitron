@@ -7,6 +7,8 @@
 #define GPIO1 0x4804c000
 #define GPIO_CLEARDATAOUT 0x190
 #define GPIO_SETDATAOUT 0x194
+#define GPIO_OE 0x134
+#define GPIO_DATAIN 0x138
 
 START:
 // clear that bit
@@ -14,19 +16,29 @@ START:
     CLR r0, r0, 4
     SBCO r0, C4, 4, 4
 
-    MOV r1, 100
+// set 16 and 17 as inputs
+    mov r3, GPIO1 | GPIO_OE
+    lbbo r1, r3, 0, 4
+    ldi r2, 3
+    lsl r2, r2, 16
+    or r1, r1, r2
+    sbbo r1, r3, 0, 4
+
+    MOV r1, 0x00f00000
 BLINK:
-    and r2, r1, 3
-    lsl r2, r2, 23
+    mov r5, GPIO1 | GPIO_DATAIN
+    lbbo r4, r5, 0, 4
+    lsr r4, r4, 16
+    lsl r2, r4, 23 
     MOV r3, GPIO1 | GPIO_SETDATAOUT
     SBBO r2, r3, 0, 4
 
-    MOV r0, 0x00700000
-DELAY:
-    SUB r0, r0, 1
-    QBNE DELAY, r0, 0
+    mov r7, 100
+wait:
+    sub r7, r7, 1
+    qbne wait, r7, 0
 
-    and r2, r1, 3
+    mov r2, 3
     lsl r2, r2, 23
     mov r3, GPIO1 | GPIO_CLEARDATAOUT
     sbbo r2, r3, 0, 4
