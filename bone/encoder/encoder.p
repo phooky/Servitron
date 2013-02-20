@@ -23,6 +23,7 @@
     .u8   idxB
     .u8   idxIdx
     .u8   state
+    .u16  errCount
 .ends
 
 .assign Channel, r20, r21, ch
