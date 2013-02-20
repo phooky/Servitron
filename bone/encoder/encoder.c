@@ -10,6 +10,7 @@ int main (void)
 {
     unsigned int ret;
     tpruss_intc_initdata pruss_intc_initdata = PRUSS_INTC_INITDATA;
+    static void *pruDataMem;
     
     printf("\nINFO: Starting %s example.\r\n", "blink");
     /* Initialize the PRU */
@@ -26,6 +27,8 @@ int main (void)
     /* Get the interrupt initialized */
     prussdrv_pruintc_init(&pruss_intc_initdata);
 
+    prussdrv_map_prumem (PRUSS0_PRU0_DATARAM, &pruDataMem);
+
     /* Execute example on PRU */
     printf("\tINFO: Executing example.\r\n");
     prussdrv_exec_program (PRU_NUM, "./encoder.bin");
@@ -35,6 +38,9 @@ int main (void)
     prussdrv_pru_wait_event (PRU_EVTOUT_0);
     printf("\tINFO: PRU completed transfer.\r\n");
     prussdrv_pru_clear_event (PRU0_ARM_INTERRUPT);
+
+    int value = *((unsigned int*)pruDataMem);
+    printf("\tENCODER VALUE: %d\r\n",value);
 
     /* Disable PRU and close memory mapping*/
     prussdrv_pru_disable (PRU_NUM);

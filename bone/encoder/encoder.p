@@ -58,8 +58,9 @@ init_channel:
 
 // update the output enable register
     sbbo r16, r17, 0, 4
-
-    mov r1, 0x00030000
+// quadrature table
+    mov r14, 0x1b8d72e4
+    mov r1, 0x000f0000
 
 sample_port:
     mov r5, GPIO1 | GPIO_DATAIN
@@ -76,6 +77,28 @@ skip_set_A:
     qbbs skip_set_B, r4, ch.idxB
     set r15.b0, r15.b0, 1
 skip_set_B:
+    // compute offset
+    lsl r15.b2, ch.state, 2
+    or r15.b2, r15.b2, r15.b0
+    lsl r15.b2, r15.b2, 1
+    lsr r13, r14, r15.b2
+    and r13, r13, 0x3
+    // switch based on table
+    qbne sw_10, r13, 1
+sw_01:
+    add ch.position, ch.position, 1
+    // increment
+    qbne sw_11, r13, 2
+sw_10:
+    sub ch.position, ch.position, 1
+    // decrement
+    qbne sw_end, r13, 3
+sw_11:
+    // error condition
+sw_end:
+
+    mov ch.state, r15.b0
+    // save state
     add r19, r19, SIZE(Channel)
     sub r18, r18, 1
     qbne process_channel, r18, 0
