@@ -36,7 +36,7 @@ START:
 // initialize channels -- this should be done externally
     mov r19, CHANNEL_START
     lbbo ch, r19, 0, SIZE(Channel)
-    mov ch.position, 0
+    mov ch.position, 1234
     mov ch.idxA, 16
     mov ch.idxB, 17
     mov ch.idxIdx, 16
@@ -84,21 +84,20 @@ skip_set_B:
     lsr r13, r14, r15.b2
     and r13, r13, 0x3
     // switch based on table
-    qbne sw_10, r13, 1
-sw_01:
+    qbne sw_2, r13, 1
+sw_1:
     add ch.position, ch.position, 1
-    // increment
-    qbne sw_11, r13, 2
-sw_10:
+sw_2:
+    qbne sw_3, r13, 2
     sub ch.position, ch.position, 1
-    // decrement
+sw_3:
     qbne sw_end, r13, 3
-sw_11:
     // error condition
 sw_end:
 
     mov ch.state, r15.b0
     // save state
+    sbbo ch, r19, 0, SIZE(Channel)
     add r19, r19, SIZE(Channel)
     sub r18, r18, 1
     qbne process_channel, r18, 0
