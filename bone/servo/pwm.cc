@@ -9,8 +9,9 @@
 #include <fcntl.h>
 #include <stdint.h>
 #include <assert.h>
+#include <unistd.h>
 
-#include <exception>
+#include <stdexcept>
 #include <iostream>
 #include <fstream>
 
@@ -50,7 +51,7 @@ bool PWM::init() {
     uint8_t* cm_map = (uint8_t*)mmap(NULL, CLOCK_MOD_SIZE, PROT_READ|PROT_WRITE,
                         MAP_SHARED, mem_fd, CLOCK_MOD_BASE);
     if (cm_map == MAP_FAILED) 
-      throw std::runtime_error("Could not map clock module");
+      throw new std::runtime_error("Could not map clock module");
     *((uint32_t*)(cm_map + CLOCK_MOD_PER_EPWMSS0_CLKCTRL)) = 0x02;
     *((uint32_t*)(cm_map + CLOCK_MOD_PER_EPWMSS1_CLKCTRL)) = 0x02;
     *((uint32_t*)(cm_map + CLOCK_MOD_PER_EPWMSS2_CLKCTRL)) = 0x02;
@@ -73,13 +74,13 @@ bool PWM::init() {
 
     // Map all pwm register banks
     pwm_map[0] = (uint8_t*)mmap(NULL, PWMSS_SIZE, PROT_READ|PROT_WRITE,
-                                MAP_SHARED, mem_fd, PWSS0_BASE);
+                                MAP_SHARED, mem_fd, PWMSS0_BASE);
     pwm_map[1] = (uint8_t*)mmap(NULL, PWMSS_SIZE, PROT_READ|PROT_WRITE,
-                                MAP_SHARED, mem_fd, PWSS1_BASE);
+                                MAP_SHARED, mem_fd, PWMSS1_BASE);
     pwm_map[2] = (uint8_t*)mmap(NULL, PWMSS_SIZE, PROT_READ|PROT_WRITE,
-                                MAP_SHARED, mem_fd, PWSS2_BASE);
+                                MAP_SHARED, mem_fd, PWMSS2_BASE);
   } catch (std::runtime_error& ex) {
-    cout << ex;
+    std::cout << ex.what();
     shutdown();
     return false;
   }
@@ -116,7 +117,7 @@ void PWM::shutdown() {
   // don't bother to unmux pins for now
   for (int i = 0; i < 3; i++) {
     if (pwm_map[i] != 0) {
-      munmap(pwm_map[i]);
+      munmap(pwm_map[i], PWMSS_SIZE);
     }
   }
   if (mem_fd != -1) {
