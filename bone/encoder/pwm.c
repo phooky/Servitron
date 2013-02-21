@@ -1,7 +1,13 @@
-#include "pwm.h"
 #include <sys/mman.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#incude <fcntl.h>
+
+#define AM33XX
+
+#include "pwm.h"
 
 void main(int argc, char** argv) {
   int dev_mem_fd;
