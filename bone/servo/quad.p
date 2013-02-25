@@ -4,25 +4,20 @@
 #define PRU0_ARM_INTERRUPT 0x03
 #define PRU0_INTERRUPT_STROBE 0x10
 #include "am335x_regs.h"
+#include "config.h"
 
 // All quadrature inputs are on port 1
 
-// number of channels
-#define CHANNEL_COUNT 6
-
-// location of channels in memory
-#define CHANNEL_START 0x00
-
 .struct QuadState
     .u32  position
-    .u8   idxA
-    .u8   idxB
-    .u8   idxIdx
     .u8   state
+    .u8   pinA 
+    .u8   pinB
+    .u8   pinIdx
     .u16  errCount
 .ends
 
-.assign Channel, r20, r21, ch
+.assign QuadState, r20, r22.w0, ch
 
 START:
 // On the PRUv2 (PRU-ICSS version), C4 is the constant
@@ -33,50 +28,48 @@ START:
     CLR r0, r0, 4
     SBCO r0, C4, 4, 4
 
-// initialize channels -- this should be done externally
-    mov r19, CHANNEL_START
-    lbbo ch, r19, 0, SIZE(Channel)
-    mov ch.position, 1234
-    mov ch.idxA, 16
-    mov ch.idxB, 17
-    mov ch.idxIdx, 16
-    mov ch.state, 0
-    sbbo ch, r19, 0, SIZE(Channel)
-
 // set inputs
-    mov r17, GPIO1 | GPIO_OE
+    mov r17, GPIO1_BASE | GPIO_OE
     lbbo r16, r17, 0, 4  // r16 <- output enable register
-    mov r19, CHANNEL_START
-    mov r18, CHANNEL_COUNT
+    mov r19, QUAD_STATE_BASE
+    mov r18, QUAD_COUNT
 init_channel:
-    lbbo ch, r19, 0, SIZE(Channel)
-    set r16, r16, ch.idxA
-    set r16, r16, ch.idxB
-    add r19, r19, SIZE(Channel)
+    lbbo ch, r19, 0, SIZE(QuadState)
+    set r16, r16, ch.pinA
+    set r16, r16, ch.pinB
+    set r16, r16, ch.pinIdx
+    add r19, r19, SIZE(QuadState)
     sub r18, r18, 1
     qbne init_channel, r18, 0
 
 // update the output enable register
     sbbo r16, r17, 0, 4
-// quadrature table
+// load quadrature table
     mov r14, 0x1b8d72e4
     mov r1, 0x000f0000
 
+// r5 will hold the gpio port address throughout
+    mov r5, GPIO1_BASE | GPIO_DATAIN
+// ----
+// This is the main quad loop.
+//
 sample_port:
-    mov r5, GPIO1 | GPIO_DATAIN
     lbbo r4, r5, 0, 4 // r4 <- data channels
 
-    mov r19, CHANNEL_START
-    mov r18, CHANNEL_COUNT
+    mov r19, QUAD_STATE_BASE
+    mov r18, QUAD_COUNT
+
 process_channel:
-    lbbo ch, r19, 0, SIZE(Channel)
-    mov r15.b0, 0
-    qbbs skip_set_A, r4, ch.idxA
+    lbbo ch, r19, 0, SIZE(QuadState)
+    mov r15.b0, 0 // new state
+    
+    qbbs skip_set_A, r4, ch.pinA
     set r15.b0, r15.b0, 0
 skip_set_A:
-    qbbs skip_set_B, r4, ch.idxB
+    qbbs skip_set_B, r4, ch.pinB
     set r15.b0, r15.b0, 1
 skip_set_B:
+
     // compute offset
     lsl r15.b2, ch.state, 2
     or r15.b2, r15.b2, r15.b0
@@ -97,24 +90,11 @@ sw_end:
 
     mov ch.state, r15.b0
     // save state
-    sbbo ch, r19, 0, SIZE(Channel)
-    add r19, r19, SIZE(Channel)
+    sbbo ch, r19, 0, SIZE(QuadState)
+    add r19, r19, SIZE(QuadState)
     sub r18, r18, 1
     qbne process_channel, r18, 0
 
-    mov r4, r15.b0    
-    lsl r2, r4, 23 
-    MOV r3, GPIO1 | GPIO_SETDATAOUT
-    SBBO r2, r3, 0, 4
-
-    mov r7, 100
-wait:
-    sub r7, r7, 1
-    qbne wait, r7, 0
-
-    mov r2, 3
-    lsl r2, r2, 23
-    mov r3, GPIO1 | GPIO_CLEARDATAOUT
     sbbo r2, r3, 0, 4
     SUB r1, r1, 1
     QBNE sample_port, r1, 0

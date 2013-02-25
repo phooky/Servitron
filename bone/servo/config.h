@@ -29,6 +29,7 @@
 // Memory map:
 // 0x00 Quadstate[6]
 // 0x100 Report
+#define QUAD_COUNT 6
 #define QUAD_STATE_BASE 0x00
 #define REPORT_BASE 0x100
 
