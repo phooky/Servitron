@@ -3,7 +3,7 @@
 
 #define PRU0_ARM_INTERRUPT 0x03
 #define PRU0_INTERRUPT_STROBE 0x10
-#include "am335x.h"
+#include "am335x_regs.h"
 
 // All quadrature inputs are on port 1
 
