@@ -53,6 +53,11 @@ init_channel:
 // ----
 // This is the main quad loop.
 //
+
+outer_loop:
+    // set up the period between reports.
+    mov r1, 0x1000
+
 sample_port:
     lbbo r4, r5, 0, 4 // r4 <- data channels
 
@@ -100,6 +105,6 @@ sw_end:
     QBNE sample_port, r1, 0
 
     MOV R31.b0, PRU0_ARM_INTERRUPT|PRU0_INTERRUPT_STROBE
-
+    jmp outer_loop
 HALT
 
