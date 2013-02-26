@@ -12,24 +12,24 @@ Quadrature::Quadrature() : pru_data_map((uint8_t*)-1) {
 
 void Quadrature::init(uint8_t ch, uint8_t a, uint8_t b, uint8_t idx) {
   // The muxing. Oh, the muxing.
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad6", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad7", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad2", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad3", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad13", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad12", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad15", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad14", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_csn2", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_csn1", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad5", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad4", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad1", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad0", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_cns0", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ben1", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_a0", 0x0f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_a1", 0x0f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad6", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad7", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad2", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad3", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad13", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad12", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad15", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad14", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_csn2", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_csn1", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad5", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad4", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad1", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad0", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_cns0", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ben1", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_a0", 0x3f);
+  writePath("/sys/kernel/debug/omap_mux/" "gpmc_a1", 0x3f);
 
   QuadState* qs = (QuadState*)(pru_data_map + QUAD_STATE_BASE);
   qs += ch;

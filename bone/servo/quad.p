@@ -56,11 +56,11 @@ init_channel:
     mov r29, 0
 outer_loop:
     // set up the period between reports.
-    mov r1, 0x040000
+    mov r1, 0x010000
 
     add r29, r29, 1
-    mov r19, QUAD_STATE_BASE
-    sbbo r29, r18, 0, 4 // < save counter
+    //mov r19, QUAD_STATE_BASE
+    //sbbo r29, r18, 0, 4 // < save counter
 sample_port:
     lbbo r4, r5, 0, 4 // r4 <- data channels
 
