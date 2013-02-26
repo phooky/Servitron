@@ -25,6 +25,11 @@
 #define Q5A 28
 #define Q5B 16
 #define Q5I 17
+
+// All motor outputs are on port 2
+#define M0A 6
+#define M0B 7
+
 //
 // Memory map:
 // 0x00 Quadstate[6]
