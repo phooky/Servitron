@@ -35,7 +35,7 @@ Quadrature::Quadrature() : pru_data_map((uint8_t*)-1) {
 void Quadrature::init(uint8_t ch, uint8_t a, uint8_t b, uint8_t idx) {
   // The muxing. Oh, the muxing.
   std::string *namesIter = inputPinNames;
-  while (! *namesIter.empty()) {
+  while (! namesIter->empty()) {
     writePath(std::string("/sys/kernel/debug/omap_mux/")+*namesIter, 0x3f);
     namesIter++;
   }
