@@ -59,7 +59,7 @@ init_channel:
 
 // Set the control status bit.
 // r7 will hold the control register base throughout.
-    mov r7, PRU_CONTROL_REGISTERS
+    mov r7, PRU0_CONTROL_REGISTERS
     lbbo r8, r7, PRU_CR_CONTROL, 4
     set r8, r8, 3
     sbbo r8, r7, PRU_CR_CONTROL, 4
