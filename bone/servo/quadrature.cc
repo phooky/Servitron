@@ -2,8 +2,10 @@
 #include "config.h"
 #include <prussdrv.h>
 #include <pruss_intc_mapping.h>
+#include <stdio.h>
+#define PRU_NUM 0
 
-Quadrature::Quadrature() : pru_data_map(-1) {
+Quadrature::Quadrature() : pru_data_map((uint8_t*)-1) {
 }
 
 void Quadrature::init(uint8_t ch, uint8_t a, uint8_t b, uint8_t idx) {
@@ -20,7 +22,6 @@ void Quadrature::init(uint8_t ch, uint8_t a, uint8_t b, uint8_t idx) {
 void Quadrature::start() {
     unsigned int ret;
     tpruss_intc_initdata pruss_intc_initdata = PRUSS_INTC_INITDATA;
-    Channel* channels;
 
     /* Initialize the PRU */
     prussdrv_init ();		
@@ -30,13 +31,13 @@ void Quadrature::start() {
     if (ret)
     {
         printf("prussdrv_open open failed\n");
-        return (ret);
+        return;
     }
     
     /* Get the interrupt initialized */
     prussdrv_pruintc_init(&pruss_intc_initdata);
 
-    prussdrv_map_prumem (PRUSS0_PRU0_DATARAM, (void*)&pru_data_map);
+    prussdrv_map_prumem (PRUSS0_PRU0_DATARAM, (void**)&pru_data_map);
     init(0, Q0A, Q0B, Q0I);
     init(1, Q1A, Q1B, Q1I);
     init(2, Q2A, Q2B, Q2I);
@@ -51,14 +52,16 @@ void Quadrature::start() {
 Report Quadrature::getNextReport() {
 
     /* Wait until PRU0 has finished execution */
-    printf("\tWaiting for report...\r\n");
+    //printf("\tWaiting for report...\r\n");
     prussdrv_pru_wait_event (PRU_EVTOUT_0);
-    Report r = *((Report*)(pru_data_map + REPORT_BASE));
+    QuadState* qs = (QuadState*)(pru_data_map + QUAD_STATE_BASE);
+    Report r = *((Report*)(pru_data_map + QUAD_STATE_BASE));// REPORT_BASE));
     prussdrv_pru_clear_event (PRU0_ARM_INTERRUPT);
 
-    for (int i = 0; i < 6; i++) {
-      printf("\tENCODER %d VALUE %d ERRORS %d\r\n",channels[i].position,channels[i].errCount);
-    }
+    //for (int i = 0; i < 6; i++) {
+    //  printf("\tENCODER %d VALUE %d ERRORS %d\r\n",i,(qs+i)->position,(qs+i)->errors);
+    //}
+    return r;
 }
 
 void Quadrature::stop() {

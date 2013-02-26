@@ -68,9 +68,9 @@ int main (void)
     prussdrv_pru_wait_event (PRU_EVTOUT_0);
     printf("\tINFO: PRU completed transfer.\r\n");
     prussdrv_pru_clear_event (PRU0_ARM_INTERRUPT);
-
-    for (int i = 0; i < CHANNEL_COUNT; i++) {
-      printf("\tENCODER %d VALUE %d ERRORS %d\r\n",channels[i].position,channels[i].errCount);
+int i;
+    for (i = 0; i < CHANNEL_COUNT; i++) {
+      printf("\tENCODER %d VALUE %d ERRORS %d\r\n",i,channels[i].position,channels[i].errCount);
     }
 
     /* Disable PRU and close memory mapping*/

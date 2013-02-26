@@ -26,7 +26,7 @@
     .u16  errCount
 .ends
 
-.assign Channel, r20, r21, ch
+.assign Channel, r20, r22.w0, ch
 
 START:
 // clear that bit

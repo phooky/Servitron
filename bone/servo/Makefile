@@ -10,7 +10,7 @@ CFLAGS+= -Wall -I$(INCDIR_APP_LOADER) -D__DEBUG -O2 -mtune=cortex-a8 -march=armv
 LDFLAGS+=-L$(LIBDIR_APP_LOADER) -lprussdrv -lpthread
 
 
-TARGETS=pwm_test quad_test
+TARGETS=pwm_test quad_test quad.bin
 BIN=
 
 all: $(TARGETS) $(BIN)
@@ -27,7 +27,7 @@ all: $(TARGETS) $(BIN)
 pwm_test: pwm_test.o pwm.o
 	$(CROSS_COMPILE)g++ $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-quad_test: quad_test.o quadrature.o quad.bin
+quad_test: quad_test.o quadrature.o
 	$(CROSS_COMPILE)g++ $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 .PHONY: clean
