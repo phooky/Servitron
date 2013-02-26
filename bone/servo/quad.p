@@ -1,8 +1,8 @@
 .origin 0
 .entrypoint START
 
-#define PRU0_ARM_INTERRUPT 0x03
-#define PRU0_INTERRUPT_STROBE 0x10
+#define PRU0_ARM_INTERRUPT 19
+
 #include "am335x_regs.h"
 #include "config.h"
 
@@ -107,7 +107,7 @@ sw_end:
     SUB r1, r1, 1
     QBNE sample_port, r1, 0
 
-    MOV R31.b0, 19+16  // PRU0_ARM_INTERRUPT|PRU0_INTERRUPT_STROBE
+    MOV R31.b0, PRU0_ARM_INTERRUPT+16  // PRU0_ARM_INTERRUPT|PRU0_INTERRUPT_STROBE
     jmp outer_loop
 HALT
 

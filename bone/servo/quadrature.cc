@@ -7,29 +7,38 @@
 
 #define PRU_NUM 0
 
+std::string inputPinNames[] = {
+  "gpmc_ad6",
+  "gpmc_ad7",
+  "gpmc_ad2",
+  "gpmc_ad3",
+  "gpmc_ad13",
+  "gpmc_ad12",
+  "gpmc_ad15",
+  "gpmc_ad14",
+  "gpmc_csn2",
+  "gpmc_csn1",
+  "gpmc_ad5",
+  "gpmc_ad4",
+  "gpmc_ad1",
+  "gpmc_ad0",
+  "gpmc_cns0",
+  "gpmc_ben1",
+  "gpmc_a0",
+  "gpmc_a1",
+  ""
+};
+
 Quadrature::Quadrature() : pru_data_map((uint8_t*)-1) {
 }
 
 void Quadrature::init(uint8_t ch, uint8_t a, uint8_t b, uint8_t idx) {
   // The muxing. Oh, the muxing.
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad6", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad7", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad2", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad3", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad13", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad12", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad15", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad14", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_csn2", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_csn1", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad5", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad4", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad1", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ad0", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_cns0", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_ben1", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_a0", 0x3f);
-  writePath("/sys/kernel/debug/omap_mux/" "gpmc_a1", 0x3f);
+  std::string *namesIter = inputPinNames;
+  while (! *namesIter.empty()) {
+    writePath(std::string("/sys/kernel/debug/omap_mux/")+*namesIter, 0x3f);
+    namesIter++;
+  }
 
   QuadState* qs = (QuadState*)(pru_data_map + QUAD_STATE_BASE);
   qs += ch;
