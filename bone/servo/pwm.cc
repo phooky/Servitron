@@ -13,7 +13,7 @@
 
 #include <stdexcept>
 #include <iostream>
-#include <fstream>
+#include "util.h"
 
 PWM::PWM(uint16_t frequency) : mem_fd(-1), frequency(frequency)
 {
@@ -32,14 +32,6 @@ const std::string pwm_names[6] = {
 };
 
 const std::string prefix = "/sys/class/pwm/";
-
-bool writePath(std::string path, int value) {
-  std::ofstream outf;
-  outf.open(path.c_str());
-  outf << value;
-  outf.close();
-  return true;
-}
 
 bool PWM::init() {
   try {

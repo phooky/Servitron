@@ -24,10 +24,10 @@ all: $(TARGETS) $(BIN)
 	${PASM} -b $<
 
 
-pwm_test: pwm_test.o pwm.o
+pwm_test: pwm_test.o pwm.o util.o
 	$(CROSS_COMPILE)g++ $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-quad_test: quad_test.o quadrature.o
+quad_test: quad_test.o quadrature.o util.o
 	$(CROSS_COMPILE)g++ $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 .PHONY: clean
