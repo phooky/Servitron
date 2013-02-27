@@ -12,7 +12,7 @@
 #include <unistd.h>
 #include <stdexcept>
 
-Motor::Motor(PWM& pwm, int pwmChannel, int pinA, pin pinB,
+Motor::Motor(PWM& pwm, int pwmChannel, int pinA, int pinB,
              const std::string muxA, const std::string muxB) :
   pwm(pwm), pwmChannel(pwmChannel), pinA(pinA), pinB(pinB),
   muxA(muxA), muxB(muxB) {
@@ -25,13 +25,13 @@ bool Motor::init() {
   if (gpioFd == -1) 
     throw std::runtime_error("Could not open memory map");
   gpioMap = (uint8_t*)mmap(NULL, GPIO_SIZE, PROT_READ|PROT_WRITE,
-                        MAP_SHARED, mem_fd, GPIO2_BASE);
+                        MAP_SHARED, gpioFd, GPIO2_BASE);
   if (gpioMap == MAP_FAILED) 
       throw new std::runtime_error("Could not map gpio module");
   // set as outputs
-  *((uint32_t*)gpioMap+GPIO_OE) &= ~((1<<pinA) | (1<<pinB));
+  *((uint32_t*)(gpioMap+GPIO_OE)) &= ~((1<<pinA) | (1<<pinB));
   // set in gnd brake mode
-  *((uint32_t*)gpioMap+GPIO_DATAOUT) &= ~((1<<pinA) | (1<<pinB));
+  *((uint32_t*)(gpioMap+GPIO_DATAOUT)) &= ~((1<<pinA) | (1<<pinB));
 }
 
 
@@ -46,7 +46,7 @@ void Motor::shutdown() {
 // Set the motor to the specified
 // power. 0 is off. Negative values are CCW, positive
 // are CW.
-void Motor::setPower(int value = 0) {
+void Motor::setPower(int value) {
   uint32_t portVal = *((uint32_t*)gpioMap+GPIO_DATAOUT);
   if (value == 0) {
     portVal &= ~(1<<pinA);

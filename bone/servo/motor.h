@@ -17,7 +17,7 @@ private:
 
   const std::string muxA, muxB;
 public:
-  Motor(PWM& pwm, int pwmChannel, int pinA, pin pinB, 
+  Motor(PWM& pwm, int pwmChannel, int pinA, int pinB, 
         const std::string muxA, const std::string muxB);
 
   bool init();
