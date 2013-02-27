@@ -19,8 +19,8 @@ Motor::Motor(PWM& pwm, int pwmChannel, int pinA, int pinB,
 }
 
 bool Motor::init() {
-  writePath(std::string("/sys/kernel/debug/omap_mux/")+muxA, 0x07);
-  writePath(std::string("/sys/kernel/debug/omap_mux/")+muxB, 0x07);
+  writePath(std::string("/sys/kernel/debug/omap_mux/")+muxA, 0x0f);
+  writePath(std::string("/sys/kernel/debug/omap_mux/")+muxB, 0x0f);
   gpioFd = open("/dev/mem", O_RDWR|O_SYNC);
   if (gpioFd == -1) 
     throw std::runtime_error("Could not open memory map");
@@ -38,7 +38,7 @@ bool Motor::init() {
 void Motor::shutdown() {
   // for safety set data pins low and turn off pwm
   pwm.setChannel(pwmChannel, 0);
-  *((uint32_t*)gpioMap+GPIO_DATAOUT) &= ~((1<<pinA) | (1<<pinB));
+  *((uint32_t*)(gpioMap+GPIO_DATAOUT)) &= ~((1<<pinA) | (1<<pinB));
   munmap(gpioMap, GPIO_SIZE);
   close(gpioFd);
 }
@@ -47,12 +47,12 @@ void Motor::shutdown() {
 // power. 0 is off. Negative values are CCW, positive
 // are CW.
 void Motor::setPower(int value) {
-  uint32_t portVal = *((uint32_t*)gpioMap+GPIO_DATAOUT);
+  uint32_t portVal = *((uint32_t*)(gpioMap+GPIO_DATAOUT));
   if (value == 0) {
     portVal &= ~(1<<pinA);
     portVal &= ~(1<<pinB);
     pwm.setChannel(pwmChannel, 0);
-    *((uint32_t*)gpioMap+GPIO_DATAOUT) = portVal & ~((1<<pinA) | (1<<pinB));
+    *((uint32_t*)(gpioMap+GPIO_DATAOUT)) = portVal & ~((1<<pinA) | (1<<pinB));
   } else if (value > 0) {
     portVal |= 1<<pinA;
     portVal &= ~(1<<pinB);
@@ -62,7 +62,7 @@ void Motor::setPower(int value) {
     value = -value;
   }
   pwm.setChannel(pwmChannel, value);
-  *((uint32_t*)gpioMap+GPIO_DATAOUT) = portVal;
+  *((uint32_t*)(gpioMap+GPIO_DATAOUT)) = portVal;
 }
     
 

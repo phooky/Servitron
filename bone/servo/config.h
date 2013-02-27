@@ -29,6 +29,28 @@
 // All motor outputs are on port 2
 #define M0A 6
 #define M0B 7
+#define M0P 0
+
+#define M1A 8
+#define M1B 9
+#define M1P 1
+
+#define M2A 10
+#define M2B 11
+#define M2P 2
+
+#define M3A 12
+#define M3B 13
+#define M3P 3
+
+#define M4A 23
+#define M4B 25
+#define M4P 4
+
+#define M5A 22
+#define M5B 24
+#define M5P 5
+
 
 //
 // Memory map:
