@@ -2,6 +2,9 @@
 .entrypoint START
 
 #define PRU0_ARM_INTERRUPT 19
+#define PRU0_CONTROL_REGISTERS 0x00022000
+#define PRU_CR_CONTROL 0x00
+#define PRU_CR_CYCLE   0x0c
 
 #include "am335x_regs.h"
 #include "config.h"
@@ -48,6 +51,19 @@ init_channel:
     mov r14, 0x1b8d72e4
     mov r1, 0x000f0000
 
+// r6 will hold the value of the cycle time throughout.
+// To change the cycle time, you'll need to restart
+// the PRU.
+   mov r7, CYCLE_COUNT_BASE
+   lbbo r6, r7, 0, 4
+
+// Set the control status bit.
+// r7 will hold the control register base throughout.
+    mov r7, PRU_CONTROL_REGISTERS
+    lbbo r8, r7, PRU_CR_CONTROL, 4
+    set r8, r8, 3
+    sbbo r8, r7, PRU_CR_CONTROL, 4
+
 // r5 will hold the gpio port address throughout
     mov r5, GPIO1_BASE | GPIO_DATAIN
 // ----
@@ -55,8 +71,6 @@ init_channel:
 //
     mov r29, 0
 outer_loop:
-    // set up the period between reports.
-    mov r1, 0x010000
 
     add r29, r29, 1
     //mov r19, QUAD_STATE_BASE
@@ -103,11 +117,28 @@ sw_end:
     sub r18, r18, 1
     qbne process_channel, r18, 0
 
-    sbbo r2, r3, 0, 4
-    SUB r1, r1, 1
-    QBNE sample_port, r1, 0
+    // Check for timeout
+    lbbo r8, r7, PRU_CR_CYCLE, 4
+    qblt sample_port, r6, r8
 
-    MOV R31.b0, PRU0_ARM_INTERRUPT+16  // PRU0_ARM_INTERRUPT|PRU0_INTERRUPT_STROBE
+    // Stop cycle counting
+    lbbo r9, r7, PRU_CR_CONTROL, 4
+    clr r9, r9, 3
+    sbbo r9, r7, PRU_CR_CONTROL, 4
+
+    // Copy report? Todo.
+
+    // Set cycle counter
+    sub r8, r8, r6
+    sbbo r8, r7, PRU_CR_CYCLE, 4
+
+    // Restart cycle counter
+    set r9, r9, 3
+    sbbo r9, r7, PRU_CR_CONTROL, 4
+
+    // Send interrupt
+    MOV R31.b0, PRU0_ARM_INTERRUPT+16
+
     jmp outer_loop
 HALT
 
