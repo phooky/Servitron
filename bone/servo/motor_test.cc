@@ -5,15 +5,15 @@
 int main() {
   PWM pwm;
   pwm.init();
-  Motor m0(pwm, 1, 8, 9, "lcd_data2", "lcd_data3");
+  Motor m0(pwm);
   m0.init();
-  m0.setPower(5000);
+  m0.setPower(1,5000);
   sleep(1);
-  m0.setPower(0);
+  m0.setPower(1,0);
   sleep(1);
-  m0.setPower(-5000);
+  m0.setPower(1,-5000);
   sleep(1);
-  m0.setPower(0);
+  m0.setPower(1,0);
   m0.shutdown();
   pwm.shutdown();
 }

@@ -10,15 +10,8 @@ private:
   
   uint8_t* gpioMap;
   int gpioFd;
-
-  int pwmChannel;
-  int pinA;
-  int pinB;
-
-  const std::string muxA, muxB;
 public:
-  Motor(PWM& pwm, int pwmChannel, int pinA, int pinB, 
-        const std::string muxA, const std::string muxB);
+  Motor(PWM& pwm);
 
   bool init();
   void shutdown();
@@ -26,7 +19,7 @@ public:
   // Set the motor to the specified
   // power. 0 is off. Negative values are CCW, positive
   // are CW.
-  void setPower(int value = 0);
+  void setPower(int channel, int value = 0);
 };
 
 #endif // MOTOR_H
