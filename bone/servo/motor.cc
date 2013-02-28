@@ -11,7 +11,7 @@
 #include <assert.h>
 #include <unistd.h>
 #include <stdexcept>
-
+#include "config.h"
 
 int pwmChannel[6] = { M0P, M1P, M2P, M3P, M4P, M5P };
 int pinA[6] = { M0A, M1A, M2A, M3A, M4A, M5A };
@@ -64,7 +64,9 @@ bool Motor::init() {
 
 void Motor::shutdown() {
   // for safety set data pins low and turn off pwm
-  pwm.setChannel(pwmChannel, 0);
+  for (int i = 0; i < 6; i++) {
+    pwm.setChannel(pwmChannel[i], 0);
+  }
   *((uint32_t*)(gpioMap+GPIO_DATAOUT)) &= ~allpins;
   munmap(gpioMap, GPIO_SIZE);
   close(gpioFd);
@@ -80,7 +82,7 @@ void Motor::setPower(int channel, int value) {
   if (value == 0) {
     portVal &= ~bitA;
     portVal &= ~bitB;
-    pwm.setChannel(pwmChannel, 0);
+    pwm.setChannel(pwmChannel[channel], 0);
     *((uint32_t*)(gpioMap+GPIO_DATAOUT)) = portVal & ~(bitA | bitB);
   } else if (value > 0) {
     portVal |= bitA;
@@ -90,7 +92,7 @@ void Motor::setPower(int channel, int value) {
     portVal |= bitB;
     value = -value;
   }
-  pwm.setChannel(pwmChannel, value);
+  pwm.setChannel(pwmChannel[channel], value);
   *((uint32_t*)(gpioMap+GPIO_DATAOUT)) = portVal;
 }
     
