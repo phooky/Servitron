@@ -3,7 +3,7 @@
 using namespace std;
 int main() {
   Quadrature q;
-
+	cout << "starting." << endl;
   q.start();
 
   for (int i = 0; i < 10000; i++) {
@@ -14,6 +14,7 @@ int main() {
 	  }
 	  cout << endl;
   }
+  cout << "stopping." << endl;
   q.stop();
 }
 

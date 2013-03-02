@@ -33,7 +33,7 @@ quad_test: quad_test.o quadrature.o util.o
 motor_test: motor_test.o motor.o util.o pwm.o
 	$(CROSS_COMPILE)g++ $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-servo_test: servo_test.o servo.o pid.o
+servo_test: servo_test.o servo.o pid.o motor.o pwm.o util.o quadrature.o
 	$(CROSS_COMPILE)g++ $(CFLAGS) -o $@ $^ $(LDFLAGS) -lm
 
 .PHONY: clean

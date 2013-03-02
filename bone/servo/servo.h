@@ -29,9 +29,9 @@ public:
 //
 
 class Servo {
-  const float deltaA = 1.0/10000;
-  const float deltaV = 1.0/1000;
-  const float deltaP = 1.0/100;
+  const static float deltaA = 1.0/10000;
+  const static float deltaV = 1.0/1000;
+  const static float deltaP = 1.0/100;
 
   PID posPID;
   Quadrature& q;

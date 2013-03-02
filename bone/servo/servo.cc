@@ -54,17 +54,17 @@ bool MoveBlock::update(float delta, float& po, float& vo, float& ao) {
   return false;
 }
 
-Servo::Servo(int chi, Quadrature& qi, Motor& mi) : ch(chi), qi(q), mi(m) {
+Servo::Servo(int chi, Quadrature& qi, Motor& mi) : q(qi), m(mi), ch(chi) {
 }
 
 void Servo::setPoint(int32_t spi) {
   sp = spi;
 }
 
-float Servo::update(int32_t pv) {
+void Servo::update(int32_t pv) {
   int32_t delta = sp - pv;
   float cv = posPID.step(0.0,delta);
-  std::cout << "power "<<cv<<std::endl;
+  std::cout << "power "<<cv << "position " << pv<<std::endl;
   m.setPower(ch,cv);
 }
 
