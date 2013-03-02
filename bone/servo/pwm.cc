@@ -60,7 +60,7 @@ bool PWM::init() {
     for (int i = 0; i < 6; i++) {
       writePath(prefix+pwm_names[i]+"/run",0);
       writePath(prefix+pwm_names[i]+"/duty_percent",0);
-      writePath(prefix+pwm_names[i]+"/period_freq",10000);
+      writePath(prefix+pwm_names[i]+"/period_freq",1000);
       writePath(prefix+pwm_names[i]+"/run",1);
     }
 

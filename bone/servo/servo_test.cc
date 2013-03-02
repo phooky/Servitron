@@ -20,9 +20,9 @@ int main() {
   m.init();
   q.start();
   Servo servo(0,q,m);
-  servo.pid().setK(2,0,0);
+  servo.pid().setK(4,0.01,0);
   servo.setPoint(5000);
-  for (int i = 0; i < 1000; i++) {
+  for (int i = 0; i < 5000; i++) {
 	  Report r = q.getNextReport();
           servo.update(r.state[0].position);
   }
