@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 typedef struct {
-  uint32_t position;
+  int32_t position;
   uint8_t state;
   uint8_t pinA;
   uint8_t pinB;

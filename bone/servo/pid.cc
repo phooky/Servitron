@@ -1,4 +1,4 @@
-#include "PID.h"
+#include "pid.h"
 
 PID::PID() {
   init();
@@ -19,3 +19,4 @@ float PID::step(float vs, float error) {
   prev_e = error;
   return rv;
 }
+
