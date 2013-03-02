@@ -77,7 +77,7 @@ void Quadrature::start() {
     init(5, Q5A, Q5B, Q5I);
 
     /* Set update period */
-    *(uint32*)(pru_data_map + CYCLE_COUNT_BASE) = 0xbebc200;
+    *(uint32_t*)(pru_data_map + CYCLE_COUNT_BASE) = 0xbebc200;
 
     /* Execute quadrature peripheral on PRU */
     prussdrv_exec_program (PRU_NUM, "./quad.bin");
