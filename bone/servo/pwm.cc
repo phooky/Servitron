@@ -59,8 +59,8 @@ bool PWM::init() {
     // Set up all clocks through the filesystem
     for (int i = 0; i < 6; i++) {
       writePath(prefix+pwm_names[i]+"/run",0);
-      writePath(prefix+pwm_names[i]+"/duty_percent",0);
-      writePath(prefix+pwm_names[i]+"/period_freq",1000);
+      writePath(prefix+pwm_names[i]+"/duty_percent",0, false);
+      writePath(prefix+pwm_names[i]+"/period_freq",1000, false);
       writePath(prefix+pwm_names[i]+"/run",1);
     }
 
@@ -71,6 +71,7 @@ bool PWM::init() {
                                 MAP_SHARED, mem_fd, PWMSS1_BASE);
     pwm_map[2] = (uint8_t*)mmap(NULL, PWMSS_SIZE, PROT_READ|PROT_WRITE,
                                 MAP_SHARED, mem_fd, PWMSS2_BASE);
+    std::cout << "Max value: " << *((uint16_t*)(pwm_map[0]+EPWM_TBPRD)) << std::endl;
   } catch (std::runtime_error& ex) {
     std::cout << ex.what();
     shutdown();
