@@ -3,6 +3,6 @@
 
 #include <string>
 
-bool writePath(std::string path, int value);
+bool writePath(std::string path, int value, bool hex = true);
 
 #endif // UTIL_H

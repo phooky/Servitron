@@ -5,9 +5,9 @@ int main() {
   PWM pwm;
   pwm.init();
   for (int i = 0; i < 6; i++) {
-    pwm.setChannel(i, i*1000);
+    pwm.setChannel(i, i*200);
   }
-  sleep(60);
+  sleep(10);
   pwm.shutdown();
   return 0;
 }
