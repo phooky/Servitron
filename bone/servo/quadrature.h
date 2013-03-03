@@ -19,14 +19,14 @@ typedef struct {
 class Quadrature {
 private:
   uint8_t* pru_data_map;
-  void init(uint8_t ch, uint8_t a, uint8_t b, uint8_t idx);
+  void initChannel(uint8_t ch, uint8_t a, uint8_t b, uint8_t idx);
 public:
   Quadrature();
-  void start();
+  void init();
   // Block until report signal recieved.
   // (how do we signal missed reports?)
   Report getNextReport();
-  void stop();
+  void shutdown();
 };
 
 #endif // QUADRATURE_H

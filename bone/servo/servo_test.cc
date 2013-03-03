@@ -18,7 +18,7 @@ int main() {
   pwm.init();
   Motor m(pwm);
   m.init();
-  q.start();
+  q.init();
   Servo servo(0,q,m);
   servo.pid().setK(4,0.01,0);
   servo.setPoint(5000);
