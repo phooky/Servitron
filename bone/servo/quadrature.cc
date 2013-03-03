@@ -9,28 +9,6 @@
 
 #include "json/JSONValue.h"
 
-std::string inputPinNames[] = {
-  "gpmc_ad6",
-  "gpmc_ad7",
-  "gpmc_ad2",
-  "gpmc_ad3",
-  "gpmc_ad13",
-  "gpmc_ad12",
-  "gpmc_ad15",
-  "gpmc_ad14",
-  "gpmc_csn2",
-  "gpmc_csn1",
-  "gpmc_ad5",
-  "gpmc_ad4",
-  "gpmc_ad1",
-  "gpmc_ad0",
-  "gpmc_cns0",
-  "gpmc_ben1",
-  "gpmc_a0",
-  "gpmc_a1",
-  ""
-};
-
 Quadrature::Quadrature() : pru_data_map((uint8_t*)-1) {
 }
 
@@ -45,16 +23,9 @@ void Quadrature::initChannel(uint8_t ch, uint8_t a, uint8_t b, uint8_t idx) {
   qs->errors = 0;
 }
 
-void Quadrature::init() {
+void Quadrature::init(const JSONArray& channels) {
     unsigned int ret;
     tpruss_intc_initdata pruss_intc_initdata = PRUSS_INTC_INITDATA;
-
-    // The muxing. Oh, the muxing.
-    std::string *namesIter = inputPinNames;
-    while (! namesIter->empty()) {
-      writePath(std::string("/sys/kernel/debug/omap_mux/")+*namesIter, 0x3f);
-      namesIter++;
-    }
 
     /* Initialize the PRU */
     prussdrv_init ();		
@@ -71,6 +42,17 @@ void Quadrature::init() {
     prussdrv_pruintc_init(&pruss_intc_initdata);
 
     prussdrv_map_prumem (PRUSS0_PRU0_DATARAM, (void**)&pru_data_map);
+    for (JSONArray::const_iter i = channels.begin(); i != channels.end(); i++) {
+      // Mux all the pins.
+      writePath(std::string("/sys/kernel/debug/omap_mux/") +  (*i)->Child("quadA")->Child("mux")->AsString();
+          // The muxing. Oh, the muxing.
+    std::string *namesIter = inputPinNames;
+    while (! namesIter->empty()) {
+      writePath(std::string+*namesIter, 0x3f);
+      namesIter++;
+    }
+
+
     initChannel(0, Q0A, Q0B, Q0I);
     initChannel(1, Q1A, Q1B, Q1I);
     initChannel(2, Q2A, Q2B, Q2I);
