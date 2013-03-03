@@ -7,6 +7,8 @@
 
 #define PRU_NUM 0
 
+#include "json/JSONValue.h"
+
 std::string inputPinNames[] = {
   "gpmc_ad6",
   "gpmc_ad7",
