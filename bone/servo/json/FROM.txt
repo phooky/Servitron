@@ -1,5 +1,0 @@
-This is a subset of the SimpleJSON library, found here:
-git://github.com/MJPA/SimpleJSON.git
-
-If git wasn't so terrible with submodules, it would be linked that way.
-
