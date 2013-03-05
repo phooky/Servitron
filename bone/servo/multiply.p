@@ -5,9 +5,9 @@
 
 .macro signextend16
 .mparam reg
-    mov reg.w0, 0
+    mov reg.w2, 0
     qbbc no_sign, reg, 15
-    mov reg.w0, 0xffff
+    mov reg.w2, 0xffff
 no_sign:
 .endm
 
@@ -25,7 +25,7 @@ multloop:
     add out, out, r27
 skipadd:
     add r26.b0, r26.b0, 1
-    qbgt multloop, r26.b0, 16
+    qbgt multloop, r26.b0, 32
 .endm
 
 .macro mult32to64
@@ -36,7 +36,7 @@ skipadd:
     // r26.b1 is 32-r6.b0
     // r27-r28 is the shift result
     mov r26.b0, 0
-    mov r26.b1, 32
+    mov r26.b1, 31
 multloop:
     qbbc skipadd, b, r26.b0
     lsl r27, a, r26.b0

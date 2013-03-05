@@ -32,21 +32,20 @@ int main (void)
     /* Get the interrupt initialized */
     prussdrv_pruintc_init(&pruss_intc_initdata);
 
-    void* pru_data_map;
-    prussdrv_map_prumem (PRU_DATA, &pru_data_map);
-
-    /* Set update period */
-    *(uint32_t*)(pru_data_map + CYCLE_COUNT_BASE) = 0x30d40; // 0xbebc200;
+    uint8_t* pru_data_map;
+    prussdrv_map_prumem (PRU_DATA, (void**)&pru_data_map);
 
     // load parameters
     int32_t a;
     int32_t b;
-    int32_t p32;
+    int32_t p32,p64lo,p64hi;
     int64_t p64;
 
+    a = 3;
+    b = -5;
     
-    *((*int32)(pru_data_map+A)) = a;
-    *((*int32)(pru_data_map+B)) = b;
+    *((int32_t*)(pru_data_map+A)) = a;
+    *((int32_t*)(pru_data_map+B)) = b;
 
     /* Execute example on PRU */
     printf("\tINFO: Executing example.\r\n");
@@ -59,14 +58,15 @@ int main (void)
     prussdrv_pru_clear_event (PRU0_ARM_INTERRUPT);
 
     // check results
-    p32 = *((*int32)(pru_data_map+OUT16));
-    p64 = *((*int32)(pru_data_map+OUT32HI));
-    p64 <<= 32;
-    p64 += *((*int32)(pru_data_map+OUT32LO));
+    p32 = *((int32_t*)(pru_data_map+OUT32));
+    p64lo = *((int32_t*)(pru_data_map+OUT64LO));
+    p64hi = *((int32_t*)(pru_data_map+OUT64HI));
+    p64 = ((uint64_t)p64hi << 32) | ((uint32_t)p64lo);
 
     printf("A = %d\nB = %d\n",a,b);
     printf("32 bit result %d (should be %d)\n",p32,a*b);
-    printf("64 bit result %lld (should be %lld)\n",p64,(int64)a*b);
+    printf("64 bit components: %d %d\n",p64lo,p64hi);
+    printf("64 bit result %lld (should be %lld)\n",p64,(int64_t)a*b);
 
     /* Disable PRU and close memory mapping*/
     prussdrv_pru_disable (PRU_NUM);

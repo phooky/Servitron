@@ -16,6 +16,7 @@ START:
     lbco r2, c24, A, 4
     lbco r3, c24, B, 4
     mult16to32 r4, r2, r3
+    //signextend16 r2
     sbco r4, c24, OUT32, 4
     lbco r2, c24, A, 4
     lbco r3, c24, B, 4
