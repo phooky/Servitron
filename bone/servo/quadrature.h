@@ -24,7 +24,7 @@ private:
   void initChannel(uint8_t ch, uint8_t a, uint8_t b, uint8_t idx);
 public:
   Quadrature();
-  void init(const JSONArray& channels);
+  void init(JSONValue* config);
   // Block until report signal recieved.
   // (how do we signal missed reports?)
   Report getNextReport();
