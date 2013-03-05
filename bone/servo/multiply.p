@@ -1,0 +1,46 @@
+//
+// r26-r29 are considered scratch registers.
+// 
+
+
+.macro signextend16
+.mparam reg
+    mov reg.w0, 0
+    qbbc no_sign, reg, 15
+    mov reg.w0, 0xffff
+no_sign:
+.endm
+
+.macro mult16to32:
+.mparam a, b, out
+    mov out, 0
+    signextend16 a
+    signextend16 b
+    // r26.b0 is the counter
+    // r27 is the shift result
+    mov r26.b0, 0
+multloop:
+    lsl r27, a, r26.b0
+    add out, out, r27
+    add r26.b0, r26.b0, 1
+    qbgt multloop, r26.b0, 16
+.endm
+
+.macro mult32to64:
+.mparam a, b, outLo, outHi
+    mov outLo, 0
+    mov outHi, 0
+    // r26.b0 is the counter
+    // r26.b1 is 32-r6.b0
+    // r27-r28 is the shift result
+    mov r26.b0, 0
+    mov r26.b1, 32
+multloop:
+    lsl r27, a, r26.b0
+    lsr r28, a, r26,b1
+    add outLo, outLo, r27
+    adc outHi, outHi, r28
+    add r26.b0, r26.b0, 1
+    sub r26.b1, r26.b1, 1
+    qbgt multloop, r26.b0, 32
+.endm
