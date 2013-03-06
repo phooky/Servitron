@@ -11,21 +11,36 @@
 no_sign:
 .endm
 
+.macro marksign32
+.mparam value, mark, scrap
+    qbbc no_mark, value, 31
+    mov scrap, 0
+    sub value, scrap, value
+    xor mark, mark, 1
+no_mark:
+.endm
+
 .macro mult16to32
 .mparam out, a, b
     mov out, 0
-    signextend16 a
-    signextend16 b
     // r26.b0 is the counter
+    // r26.b1 is the result sign
     // r27 is the shift result
     mov r26.b0, 0
+    mov r26.b1, 0
+    marksign a, r26.b1, r27
+    marksign b, r26.b1, r27
 multloop:
     qbbc skipadd, b, r26.b0
     lsl r27, a, r26.b0
     add out, out, r27
 skipadd:
     add r26.b0, r26.b0, 1
-    qbgt multloop, r26.b0, 32
+    qbgt multloop, r26.b0, 16
+    qbbc skipinv, r26.b1, 0
+    mov r27, 0
+    sub out, r27, out
+skipinv:
 .endm
 
 .macro mult32to64
