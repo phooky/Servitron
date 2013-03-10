@@ -449,10 +449,10 @@ NXP Semiconductor.
 <connect gate="G$1" pin="GND_B" pad="P$18 P$19 P$20"/>
 <connect gate="G$1" pin="IN_A" pad="P$5"/>
 <connect gate="G$1" pin="IN_B" pad="P$11"/>
-<connect gate="G$1" pin="OUT_A" pad="P$1 P$25 P$30 T$1"/>
-<connect gate="G$1" pin="OUT_B" pad="P$15 P$16 P$21 T$2"/>
+<connect gate="G$1" pin="OUT_A" pad="P$1 P$25 P$30 T$1" route="any"/>
+<connect gate="G$1" pin="OUT_B" pad="P$15 P$16 P$21 T$2" route="any"/>
 <connect gate="G$1" pin="PWM" pad="P$8"/>
-<connect gate="G$1" pin="VCC" pad="P$3 P$13 P$23 T$3"/>
+<connect gate="G$1" pin="VCC" pad="P$3 P$13 P$23 T$3" route="any"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -466,10 +466,10 @@ NXP Semiconductor.
 <connect gate="G$1" pin="GND_B" pad="P$18 P$19 P$20"/>
 <connect gate="G$1" pin="IN_A" pad="P$5"/>
 <connect gate="G$1" pin="IN_B" pad="P$11"/>
-<connect gate="G$1" pin="OUT_A" pad="P$1 P$25 P$30 T$1"/>
-<connect gate="G$1" pin="OUT_B" pad="P$15 P$16 P$21 T$2"/>
+<connect gate="G$1" pin="OUT_A" pad="P$1 P$25 P$30 T$1" route="any"/>
+<connect gate="G$1" pin="OUT_B" pad="P$15 P$16 P$21 T$2" route="any"/>
 <connect gate="G$1" pin="PWM" pad="P$8"/>
-<connect gate="G$1" pin="VCC" pad="P$3 P$13 P$23 T$3"/>
+<connect gate="G$1" pin="VCC" pad="P$3 P$13 P$23 T$3" route="any"/>
 </connects>
 <technologies>
 <technology name=""/>

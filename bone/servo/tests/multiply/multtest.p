@@ -23,7 +23,10 @@ START:
     mult32to64 r4, r5, r2, r3
     sbco r4, c24, OUT64LO, 4
     sbco r5, c24, OUT64HI, 4
-    
+    lbco r2, c24, A, 4
+    lbco r3, c24, B, 4
+    mult32to32 r4, r2, r3
+    sbco r4, c24, OUT32B
     // Send interrupt
     MOV R31.b0, PRU0_ARM_INTERRUPT+16
 HALT
