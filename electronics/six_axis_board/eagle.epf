@@ -338,13 +338,12 @@ UsedLibrary="/home/phooky/opt/eagle-6.3.0/lbr/xilinx-xc9.lbr"
 UsedLibrary="/home/phooky/opt/eagle-6.3.0/lbr/xilinx-xcv.lbr"
 UsedLibrary="/home/phooky/opt/eagle-6.3.0/lbr/zetex.lbr"
 UsedLibrary="/home/phooky/opt/eagle-6.3.0/lbr/zilog.lbr"
-UsedLibrary="/home/phooky/eagle/Adafruit-Eagle-Library/adafruit.lbr"
 UsedLibrary="/home/phooky/Repos/RobotAMonth/February/electronics/controller.lbr"
 
 [Win_1]
 Type="Schematic Editor"
-Loc="-7 59 1833 1000"
-State=2
+Loc="0 59 1919 1085"
+State=1
 Number=1
 File="beagle-cape.sch"
 View="14.6253 -36.3262 81.81 104.779"
@@ -379,12 +378,12 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=91
-Views=" 2: 58.6712 -11.6109 369.354 180.86 3: 35.3538 15.6218 210.408 114.375"
+Views=" 1: 14.6253 -36.3262 81.81 104.779 2: 58.6712 -11.6109 369.354 180.86 3: 35.3538 15.6218 210.408 114.375"
 Sheet=1
 
 [Win_2]
 Type="Control Panel"
-Loc="329 -8 1595 1017"
+Loc="329 0 1595 1025"
 State=1
 Number=0
 
