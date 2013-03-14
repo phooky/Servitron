@@ -826,9 +826,6 @@ TS-003</description>
 <rectangle x1="52.451" y1="72.136" x2="52.959" y2="72.644" layer="51" rot="R90"/>
 <rectangle x1="49.911" y1="74.676" x2="50.419" y2="75.184" layer="51" rot="R90"/>
 <rectangle x1="52.451" y1="74.676" x2="52.959" y2="75.184" layer="51" rot="R90"/>
-<rectangle x1="28.575" y1="69.215" x2="43.815" y2="86.36" layer="48"/>
-<rectangle x1="40.005" y1="0" x2="50.165" y2="11.43" layer="48"/>
-<rectangle x1="15.875" y1="0" x2="34.29" y2="17.78" layer="48"/>
 </package>
 </packages>
 <symbols>
