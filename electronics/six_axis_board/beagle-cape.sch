@@ -19284,7 +19284,7 @@ www.irf.com&lt;p&gt;
 <wire x1="-81.28" y1="20.32" x2="-96.52" y2="20.32" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="GND" class="1">
+<net name="GND" class="0">
 <segment>
 <pinref part="GND30" gate="1" pin="GND"/>
 <wire x1="5.08" y1="33.02" x2="12.7" y2="33.02" width="0.1524" layer="91"/>
@@ -19685,7 +19685,7 @@ www.irf.com&lt;p&gt;
 <label x="91.44" y="83.82" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="BRAKE" class="1">
+<net name="BRAKE" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="GPIO0_26"/>
 <wire x1="91.44" y1="78.74" x2="76.2" y2="78.74" width="0.1524" layer="91"/>
@@ -19906,7 +19906,7 @@ www.irf.com&lt;p&gt;
 <busses>
 </busses>
 <nets>
-<net name="+24V" class="1">
+<net name="+24V" class="0">
 <segment>
 <pinref part="U$2" gate="G$1" pin="VCC"/>
 <pinref part="P+2" gate="1" pin="+24V"/>
@@ -19970,7 +19970,7 @@ www.irf.com&lt;p&gt;
 <pinref part="R1" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="GND" class="1">
+<net name="GND" class="0">
 <segment>
 <pinref part="U$2" gate="G$1" pin="GND_A"/>
 <pinref part="GND1" gate="1" pin="GND"/>
@@ -20923,7 +20923,7 @@ www.irf.com&lt;p&gt;
 <busses>
 </busses>
 <nets>
-<net name="+24V" class="1">
+<net name="+24V" class="0">
 <segment>
 <pinref part="P+15" gate="1" pin="+24V"/>
 <pinref part="POWER_IN" gate="G$1" pin="P$1"/>
@@ -20945,7 +20945,7 @@ www.irf.com&lt;p&gt;
 <wire x1="162.56" y1="83.82" x2="162.56" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="GND" class="1">
+<net name="GND" class="0">
 <segment>
 <pinref part="POWER_IN" gate="G$1" pin="P$2"/>
 <pinref part="GND21" gate="1" pin="GND"/>
@@ -21113,7 +21113,7 @@ www.irf.com&lt;p&gt;
 <wire x1="152.4" y1="78.74" x2="162.56" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$19" class="1">
+<net name="N$19" class="0">
 <segment>
 <pinref part="Q1" gate="G$1" pin="D"/>
 <pinref part="U$11" gate="G$1" pin="G"/>
@@ -21130,7 +21130,7 @@ www.irf.com&lt;p&gt;
 <wire x1="121.92" y1="63.5" x2="124.46" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="BRAKE" class="1">
+<net name="BRAKE" class="0">
 <segment>
 <pinref part="R44" gate="G$1" pin="2"/>
 <pinref part="Q1" gate="G$1" pin="G"/>
