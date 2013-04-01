@@ -51,6 +51,8 @@
 #define M5B 24
 #define M5P 5
 
+// Brake is on port 0
+#define BRAKE_PIN 26
 
 //
 // Memory map:
