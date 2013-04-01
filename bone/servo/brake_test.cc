@@ -6,7 +6,7 @@ int main() {
   brake.init();
   for (int i = 0; i < 10; i++) {
     brake.setBrake(false);
-    sleep(1);
+    sleep(2);
     brake.setBrake(true);
     sleep(1);
   }
