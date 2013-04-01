@@ -1,0 +1,7 @@
+Version Zero
+------------
+
+- The brake transistor is turned on at startup. The bone needs to be initialized properly (appears to be pulling pin low).
+- R43 needs to be below 1K to turn on the transistor fully. Not sure what's going on here.
+- The brake circuit should be reworked completely.
+
