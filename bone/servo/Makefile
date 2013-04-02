@@ -36,7 +36,7 @@ motor_test: motor_test.o motor.o util.o pwm.o
 servo_test: servo_test.o servo.o pid.o motor.o pwm.o util.o quadrature.o
 	$(CROSS_COMPILE)g++ $(CFLAGS) -o $@ $^ $(LDFLAGS) -lm
 
-brake_test: brake_test.o brake.o
+brake_test: brake_test.o brake.o util.o
 	$(CROSS_COMPILE)g++ $(CFLAGS) -o $@ $^ $(LDFLAGS) -lm
 
 .PHONY: clean
