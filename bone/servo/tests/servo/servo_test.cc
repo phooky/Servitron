@@ -1,4 +1,5 @@
 #include "servo.h"
+#include "brake.h"
 #include <iostream>
 
 int main() {
@@ -15,18 +16,22 @@ int main() {
 
   PWM pwm;
   Quadrature q;
+  Brake b;
+  b.init();
+  b.setBrake(true);
   pwm.init();
   Motor m(pwm);
   m.init();
   q.init();
-  Servo servo(0,q,m);
+  Servo servo(4,q,m);
   servo.pid().setK(4,0.01,0);
   servo.setPoint(5000);
   for (int i = 0; i < 5000; i++) {
 	  Report r = q.getNextReport();
-          servo.update(r.state[0].position);
+          servo.update(r.state[4].position);
+	  std::cout << r.state[4].position << std::endl;
   }
-  m.setPower(0,0);
-  q.stop();
+  m.setPower(4,0);
+  q.shutdown();
 
 }

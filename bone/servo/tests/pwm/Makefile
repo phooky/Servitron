@@ -6,7 +6,7 @@ LIBDIR_APP_LOADER?=$(PRU_SW)/app_loader/lib
 INCDIR_APP_LOADER?=$(PRU_SW)/app_loader/include
 PASM?=$(PRU_SW)/utils/pasm
 
-CFLAGS+= -Wall -I$(INCDIR_APP_LOADER) -D__DEBUG -O2 -mtune=cortex-a8 -march=armv7-a
+CFLAGS+= -Wall -I../.. -I$(INCDIR_APP_LOADER) -D__DEBUG -O2 -mtune=cortex-a8 -march=armv7-a
 LDFLAGS+=-L$(LIBDIR_APP_LOADER) -lprussdrv -lpthread
 
 
@@ -22,7 +22,7 @@ all: $(TARGETS)
 %.bin: %.p $(DEPS)
 	${PASM} -b $<
 
-quad_test: pwm_test.o ../../pwm.o ../../pwm.o
+pwm_test: pwm_test.o ../../pwm.o ../../util.o
 	$(CROSS_COMPILE)g++ $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 .PHONY: clean

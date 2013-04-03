@@ -10,7 +10,7 @@ CFLAGS+= -Wall -I../.. -I$(INCDIR_APP_LOADER) -D__DEBUG -O2 -mtune=cortex-a8 -ma
 LDFLAGS+=-L$(LIBDIR_APP_LOADER) -lprussdrv -lpthread
 
 
-TARGETS=quad_test 
+TARGETS=servo_test 
 BIN=../../quad.bin
 
 all: $(TARGETS) $(BIN)
@@ -23,7 +23,7 @@ all: $(TARGETS) $(BIN)
 %.bin: %.p $(DEPS)
 	${PASM} -b $<
 
-quad_test: quad_test.o ../../quadrature.o ../../util.o
+servo_test: servo_test.o ../../pwm.o ../../brake.o ../../motor.o  ../../quadrature.o ../../util.o ../../servo.o ../../pid.o
 	$(CROSS_COMPILE)g++ $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 .PHONY: clean
