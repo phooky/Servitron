@@ -4,7 +4,7 @@ PRU_SW?=/home/root/am335x_pru_package/pru_sw
 CROSS_COMPILE?=arm-angstrom-linux-gnueabi-
 LIBDIR_APP_LOADER?=$(PRU_SW)/app_loader/lib
 INCDIR_APP_LOADER?=$(PRU_SW)/app_loader/include
-PASM?=$(PRU_SW)/utils/pasm
+PASM?=$(PRU_SW)/utils/pasm.arm7l
 
 CFLAGS+= -Wall -I../.. -I$(INCDIR_APP_LOADER) -D__DEBUG -O2 -mtune=cortex-a8 -march=armv7-a
 LDFLAGS+=-L$(LIBDIR_APP_LOADER) -lprussdrv -lpthread
