@@ -1,0 +1,6 @@
+#! /usr/bin/env python
+# encoding: utf-8
+
+def configure(ctx):
+	print('Configuring waf project in {0}'.format(ctx.path.abspath()))
+
