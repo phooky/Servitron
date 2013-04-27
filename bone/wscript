@@ -11,5 +11,26 @@ def configure(ctx):
 	ctx.load('compiler_c++')
 	print('Configuring waf project in {0}'.format(ctx.path.abspath()))
 
+coresrc = [ 
+        'src/brake.cc',
+        'src/motor.cc',
+        'src/pid.cc',
+        'src/pwm.cc',
+        'src/quadrature.cc',
+        'src/servo.cc',
+        'src/util.cc' ]
 
+PRU_SW='/home/root/am335x_pru_package/pru_sw'
 
+def build(bld):
+        bld.program(
+                source = coresrc + ['tests/brake_test.cc'],
+                target = 'brake_test',
+                includes = ['src', 'tests'],
+
+                lib          = ['prussdrv','pthread'],
+                libpath      = [PRU_SW+'/app_loader/lib'],
+                
+                install_path = 'bin', 
+                cflags       = ['-Wall', '-D__DEBUG', '-O2', '-mtune=cortex-a8', '-march=armv7-a']
+                )
