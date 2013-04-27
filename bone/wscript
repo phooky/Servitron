@@ -1,6 +1,10 @@
 #! /usr/bin/env python
 # encoding: utf-8
 
+APPNAME='servitron6'
+VERSION='0.1'
+
+
 def configure(ctx):
 	print('Configuring waf project in {0}'.format(ctx.path.abspath()))
 

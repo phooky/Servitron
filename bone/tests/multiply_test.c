@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 
-#include "pru_mem.h"
+#include "multiply_pru_mem.h"
 
 void testMult(int32_t a, int32_t b)
 {
