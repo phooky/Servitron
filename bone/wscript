@@ -4,7 +4,12 @@
 APPNAME='servitron6'
 VERSION='0.1'
 
-
+def options(ctx):
+	ctx.load('compiler_c++')
+	
 def configure(ctx):
+	ctx.load('compiler_c++')
 	print('Configuring waf project in {0}'.format(ctx.path.abspath()))
+
+
 
