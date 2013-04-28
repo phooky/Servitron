@@ -64,7 +64,7 @@ void Servo::setPoint(int32_t spi) {
 void Servo::update(int32_t pv) {
   int32_t delta = sp - pv;
   float cv = posPID.step(0.0,delta);
-  std::cout << "power "<<cv << "position " << pv<<std::endl;
+  std::cout << "power "<<cv << " position " << pv<<std::endl;
   m.setPower(ch,cv);
 }
 

@@ -26,7 +26,29 @@ def build(bld):
         bld.program(
                 source = coresrc + ['tests/brake_test.cc'],
                 target = 'brake_test',
-                includes = ['src', 'tests'],
+                includes = ['src', 'tests', PRU_SW+'/app_loader/include'],
+
+                lib          = ['prussdrv','pthread'],
+                libpath      = [PRU_SW+'/app_loader/lib'],
+                
+                install_path = 'bin', 
+                cflags       = ['-Wall', '-D__DEBUG', '-O2', '-mtune=cortex-a8', '-march=armv7-a']
+                )
+        bld.program(
+                source = coresrc + ['tests/servo_test.cc'],
+                target = 'servo_test',
+                includes = ['src', 'tests', PRU_SW+'/app_loader/include'],
+
+                lib          = ['prussdrv','pthread'],
+                libpath      = [PRU_SW+'/app_loader/lib'],
+                
+                install_path = 'bin', 
+                cflags       = ['-Wall', '-D__DEBUG', '-O2', '-mtune=cortex-a8', '-march=armv7-a']
+                )
+	bld.program(
+                source = coresrc + ['tests/quad_test.cc'],
+                target = 'quad_test',
+                includes = ['src', 'tests', PRU_SW+'/app_loader/include'],
 
                 lib          = ['prussdrv','pthread'],
                 libpath      = [PRU_SW+'/app_loader/lib'],

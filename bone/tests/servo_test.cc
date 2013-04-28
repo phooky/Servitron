@@ -2,6 +2,7 @@
 #include "brake.h"
 #include <iostream>
 
+#define SERVO 5
 int main() {
   // MoveBlock block(5.0,2.0,1.0,0.4,0.4);
   // float delta = 0.1;
@@ -23,15 +24,15 @@ int main() {
   Motor m(pwm);
   m.init();
   q.init();
-  Servo servo(4,q,m);
-  servo.pid().setK(4,0.01,0);
+  Servo servo(SERVO,q,m);
+  servo.pid().setK(4,0.01,0.001);
   servo.setPoint(5000);
   for (int i = 0; i < 5000; i++) {
 	  Report r = q.getNextReport();
-          servo.update(r.state[4].position);
-	  std::cout << r.state[4].position << std::endl;
+          servo.update(r.state[SERVO].position);
+	  std::cout << r.state[SERVO].position << std::endl;
   }
-  m.setPower(4,0);
+  m.setPower(SERVO,0);
   q.shutdown();
 
 }

@@ -45,11 +45,11 @@
 
 #define M4A 23
 #define M4B 25
-#define M4P 4
+#define M4P 5
 
 #define M5A 22
 #define M5B 24
-#define M5P 5
+#define M5P 4
 
 // Brake is on port 0
 #define BRAKE_PIN 26
