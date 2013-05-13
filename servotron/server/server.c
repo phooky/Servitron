@@ -29,14 +29,21 @@ int startSocketServer(const char* sockName) {
     cerr << "Could not bind " << sockName << ": " <<strerror(errno) <<endl;
     return -1;
   }
-  listen(listenSock,2);
+  if (listen(listenSock,2) == -1) {
+    cerr << "Could not listen on " << sockName << ": " <<strerror(errno) <<endl;
+    return -1;
+  }
   while(1) {
     // Accept one client at a time.
     struct sockaddr_un inSockaddr;
     socklen_t len = sizeof(inSockaddr);
     int inSock = accept(listenSock, (struct sockaddr*)&inSockaddr, &len);
-    write(inSock,"GOODBYE\n",8);
-    close(inSock);
+    if (inSock == -1) {
+      cerr << "Bad accept on " << sockName << ": " <<strerror(errno) <<endl;
+    } else {
+      write(inSock,"GOODBYE\n",8);
+      close(inSock);
+    }
   }
   return 0;
 }
