@@ -1,0 +1,24 @@
+
+# This is the WAF script for building the servotron server, utilities,
+# and tests.
+
+APPNAME='servitron-six'
+VERSION='0.1'
+
+scrdir='.'
+blddir='build'
+
+def options(opt):
+    """
+    Servitron needs g++ to build the server, and PASM to generate
+    the PRU code.
+    """
+    opt.load('compiler_c++')
+
+def configure(conf):
+    conf.find_program('pasm', var='PASM')
+    conf.load('compiler_c++')
+    conf.env.append_value('CXXFLAGS',['-O2','-Wall','-mtune=cortex-a8'])
+
+def build(bld):
+    pass
