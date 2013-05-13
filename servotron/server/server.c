@@ -7,6 +7,8 @@
 #include <string.h>
 #include <iostream>
 
+#include "pinconfig.h"
+
 using namespace std;
 
 #ifndef SOCKET_NAME
