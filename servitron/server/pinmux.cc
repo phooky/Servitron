@@ -41,6 +41,19 @@ bool mux::mux_all_pins() {
     writePath("/sys/kernel/debug/omap_mux/gpmc_ben1", 0x3f);
     writePath("/sys/kernel/debug/omap_mux/gpmc_a0", 0x3f);
     writePath("/sys/kernel/debug/omap_mux/gpmc_a1", 0x3f);
+    // mux motor driver output pins
+    writePath("/sys/kernel/debug/omap_mux/lcd_data0", 0x0f);
+    writePath("/sys/kernel/debug/omap_mux/lcd_data1", 0x0f);
+    writePath("/sys/kernel/debug/omap_mux/lcd_data2", 0x0f);
+    writePath("/sys/kernel/debug/omap_mux/lcd_data3", 0x0f);
+    writePath("/sys/kernel/debug/omap_mux/lcd_data4", 0x0f);
+    writePath("/sys/kernel/debug/omap_mux/lcd_data5", 0x0f);
+    writePath("/sys/kernel/debug/omap_mux/lcd_data6", 0x0f);
+    writePath("/sys/kernel/debug/omap_mux/lcd_data7", 0x0f);
+    writePath("/sys/kernel/debug/omap_mux/lcd_vsync", 0x0f);
+    writePath("/sys/kernel/debug/omap_mux/lcd_pclk", 0x0f);
+    writePath("/sys/kernel/debug/omap_mux/lcd_hsync", 0x0f);
+    writePath("/sys/kernel/debug/omap_mux/lcd_ac_bias_en", 0x0f);
     return true;
 }
 
