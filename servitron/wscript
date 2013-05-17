@@ -10,6 +10,9 @@ blddir='build'
 
 from platform import machine
 
+server_sources = set([
+    'server/server.cc', 'server/pinmux.cc' ])
+
 def options(opt):
     """
     Servitron needs g++ to build the server, and PASM to generate
@@ -23,4 +26,5 @@ def configure(conf):
     conf.env.append_value('CXXFLAGS',['-O2','-Wall','-mtune=cortex-a8'])
 
 def build(bld):
+    bld(features=['cxx'],source=server_sources,name='servotrond')
     pass
