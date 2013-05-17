@@ -11,7 +11,7 @@ blddir='build'
 from platform import machine
 
 server_sources = set([
-    'server/server.cc', 'server/pinmux.cc' ])
+    'server/server.cc', 'server/motor.cc', 'server/pinmux.cc' ])
 
 def options(opt):
     """
