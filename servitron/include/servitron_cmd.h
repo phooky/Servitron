@@ -4,9 +4,13 @@
 #include <stdint.h>
 // This defines the command structures for servitron 6.
 namespace servitron {
-  typedef uint8_t CommandCode;
+  typedef uint8_t CmdCode;
+  typedef uint8_t RspCode;
 
-  const CommandCode Hello = 0x01;
+  const RspCode RspOK = 0x80;
+  const RspCode RspError = 0x81;
+
+  const CmdCode Hello = 0x01;
 
   typedef struct {
     uint16_t clientVersion;
@@ -18,7 +22,7 @@ namespace servitron {
     char* serverStr;
   } HelloRsp;
 
-  const CommandCode MechStatus = 0x02;
+  const CmdCode MechStatus = 0x02;
 
   typedef struct {
     int32_t position;
@@ -29,7 +33,7 @@ namespace servitron {
     MechAxisStatus axis[6];
   } MechStatusRsp;
 
-  const CommandCode QueueStatus = 0x03;
+  const CmdCode QueueStatus = 0x03;
   
   typedef struct {
     int16_t remainingModes;
