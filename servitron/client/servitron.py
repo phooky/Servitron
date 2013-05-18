@@ -28,6 +28,8 @@ class Servitron:
             r = self.s.recv(1)
             if r == '\x00':
                 return s
+            else:
+                s = s + r
 
     def sendNTStr(self,s):
         self.s.send(s.encode('ascii'))
@@ -39,6 +41,7 @@ class Servitron:
         self.sendNTStr(self.clientStr)
         (rspCode,srvVersion) = struct.unpack('=BH',self.s.recv(3))
         srvStr = self.recvNTStr()
+        return(srvVersion,srvStr)
         
         
             

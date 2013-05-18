@@ -90,9 +90,9 @@ bool handleHello(int sock) {
   recv(sock,&clientVersion,sizeof(clientVersion),0);
   std::string s = recvNTStr(sock);
   cout << "Got hello from version "<<clientVersion<<", message "<<s<<endl;
-  //send(sock,&RspOK,1,0);
-  //send(sock,&server_version,sizeof(server_version),0);
-  //sendNTStr(sock,server_msg);
+  send(sock,&RspOK,1,0);
+  send(sock,&server_version,sizeof(server_version),0);
+  sendNTStr(sock,server_msg);
   return true;
 }
 
