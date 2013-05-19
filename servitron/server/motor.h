@@ -1,18 +1,7 @@
 #ifndef MOTOR_H
 #define MOTOR_H
 
-#include "pwm.h"
-#include <stdint.h>
-#include <string>
-class Motor {
-private:
-  PWM& pwm;
-  
-  uint8_t* gpioMap;
-  int gpioFd;
-public:
-  Motor(PWM& pwm);
-
+namespace motor {
   bool init();
   void shutdown();
 
