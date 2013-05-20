@@ -13,6 +13,8 @@ Types of interaction
 
 * Hello: client should connect to server and get a greeting message including server version
 * Status: client can request status from the server and get current positions, speeds, and queue status.
+* Calibration: set PID settings, find index pulse, confirm directionality, find physical range
+* Configuration persistence.
 * Non-blocking motion commands: clients should be able to place motions on a queue of sequentially interpreted commands
 
 General command/response framework
@@ -62,4 +64,22 @@ Command payload: None
 Response payload:
     int16_t remainingMoves
 
+Calibration interactions
+------------------------
+Calibration and configuration commands begin at 0x10
+
+*Find directionality*
+
+*Find range of motion*
+
+*Find index pulse*
+
+*Set PID*
+
+Persistence interactions
+------------------------
+
+*Load config*
+
+*Save config*
 

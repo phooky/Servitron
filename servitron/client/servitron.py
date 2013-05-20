@@ -43,7 +43,17 @@ class Servitron:
         srvStr = self.recvNTStr()
         return(srvVersion,srvStr)
         
-        
+    def getStatus(self):
+        axisFormat='=iiB'
+        msg = struct.pack('=B', 0x02)
+        self.s.send(msg)
+        (rspCode,) = struct.unpack('=B',self.s.recv(1))
+        a = [None]*6
+        for i in range(6):
+            a[i] = struct.unpack(axisFormat,self.s.recv(struct.calcsize(axisFormat)))
+        return (a, struct.unpack('=B',self.s.recv(1)))
+
+            
             
         
 

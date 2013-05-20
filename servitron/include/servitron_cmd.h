@@ -27,11 +27,13 @@ namespace servitron {
   typedef struct {
     int32_t position;
     int32_t velocity;
-  } MechAxisStatus;
+    uint8_t flags; // powered, etc
+  } __attribute__((packed)) MechAxisStatus;
 
   typedef struct {
     MechAxisStatus axis[6];
-  } MechStatusRsp;
+    uint8_t flags; // brake, etc
+  } __attribute__((packed)) MechStatusRsp;
 
   const CmdCode QueueStatus = 0x03;
   

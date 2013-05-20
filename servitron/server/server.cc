@@ -96,6 +96,27 @@ bool handleHello(int sock) {
   return true;
 }
 
+bool handleMechStatus(int sock) {
+  MechStatusRsp rsp;
+  // Fill mechanical status response
+  for (int i =0; i < 6; i++) {
+    rsp.axis[i].position = i;
+    rsp.axis[i].velocity = -i;
+    rsp.axis[i].flags = 100;
+  }
+  send(sock,&RspOK,1,0);
+  send(sock,&rsp,sizeof(rsp),0);
+  return true;
+}
+
+bool handleQueueStatus(int sock) {
+  QueueStatusRsp rsp;
+  // Fill queue status response
+  send(sock,&RspOK,1,0);
+  send(sock,&rsp,sizeof(rsp),0);
+  return true;
+}
+
 bool processCommand(int sock) {
   uint8_t cmd;
   ssize_t sz = recv(sock, &cmd, 1, 0);
@@ -104,6 +125,10 @@ bool processCommand(int sock) {
     switch(cmd) {
     case Hello:
       return handleHello(sock);
+    case MechStatus:
+      return handleMechStatus(sock);
+    case QueueStatus:
+      return handleQueueStatus(sock);
     default:
       break;
     }
