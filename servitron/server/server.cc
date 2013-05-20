@@ -112,6 +112,7 @@ bool handleMechStatus(int sock) {
 bool handleQueueStatus(int sock) {
   QueueStatusRsp rsp;
   // Fill queue status response
+  rsp.remainingMoves = 0;
   send(sock,&RspOK,1,0);
   send(sock,&rsp,sizeof(rsp),0);
   return true;

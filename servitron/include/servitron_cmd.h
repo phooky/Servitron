@@ -15,12 +15,12 @@ namespace servitron {
   typedef struct {
     uint16_t clientVersion;
     char* clientStr;
-  } HelloCmd;
+  } __attribute__((packed)) HelloCmd;
 
   typedef struct {
     uint16_t serverVersion;
     char* serverStr;
-  } HelloRsp;
+  } __attribute__((packed)) HelloRsp;
 
   const CmdCode MechStatus = 0x02;
 
@@ -38,8 +38,8 @@ namespace servitron {
   const CmdCode QueueStatus = 0x03;
   
   typedef struct {
-    int16_t remainingModes;
-  } QueueStatusRsp;
+    int16_t remainingMoves;
+  } __attribute__((packed)) QueueStatusRsp;
 };
 
 #endif // SERVITRON_CMD_H

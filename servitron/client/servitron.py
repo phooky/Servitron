@@ -53,6 +53,15 @@ class Servitron:
             a[i] = struct.unpack(axisFormat,self.s.recv(struct.calcsize(axisFormat)))
         return (a, struct.unpack('=B',self.s.recv(1)))
 
+    def getQueueStatus(self):
+        queueStatFmt = '=H'
+        msg = struct.pack('=B', 0x03)
+        self.s.send(msg)
+        (rspCode,) = struct.unpack('=B',self.s.recv(1))
+        qstat = struct.unpack(queueStatFmt,self.s.recv(struct.calcsize(queueStatFmt)))
+        return qstat
+        
+
             
             
         

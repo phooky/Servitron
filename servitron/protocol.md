@@ -56,7 +56,9 @@ Response payload:
     {
         int32_t position
         int32_t velocity
+        uint8_t flags _axis enabled, axis calibrated, etc_
     }[6]
+    uint8_t flags _brake enabled, system initialized_
 
 *Queue status*
 Command code: 0x03
@@ -69,12 +71,37 @@ Calibration interactions
 Calibration and configuration commands begin at 0x10
 
 *Find directionality*
+Command code: 0x10
+Command payload:
+    uint8_t axis
+Response payload:
+    uint8_t directionality
+Directionality response:
+* 0x00: directionality is positive (+motor is +pos)
+* 0x01: directionality is negative (+motor is -pos)
+* 0x02: directionality seek failed (unable to move motor within window)
 
-*Find range of motion*
+*Start range of motion seek*
+Command code: 0x11
+Command payload:
+    uint8_t axis
+Response payload: None
 
-*Find index pulse*
+*Complete range of motion seek*
+Command code: 0x12
+Command payload: None
+Response payload:
+    int32_t min_pos
+    int32_t max_pos
+    // index pulse frequency information??? TODO
 
 *Set PID*
+Command code: 0x13
+Command payload: 
+    uint8_t axis
+    // PID data??? TODO
+Response payload: None
+    
 
 Persistence interactions
 ------------------------
