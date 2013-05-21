@@ -11,7 +11,7 @@ blddir='build'
 from platform import machine
 
 server_sources = set([
-    'server/server.cc', 'server/motor.cc', 'server/pinmux.cc' ])
+    'server/server.cc' ])
 
 def options(opt):
     """
@@ -23,7 +23,9 @@ def options(opt):
 def configure(conf):
     conf.find_program('pasm.{0}'.format(machine()), var='PASM', path_list='../am335x_pru_package/pru_sw/utils')
     conf.load('compiler_c++')
-    conf.env.append_value('CXXFLAGS',['-O2','-Wall','-mtune=cortex-a8'])
+    conf.env.append_value('CXXFLAGS',['-O2','-Wall'])
+    if machine() == 'armv7l':
+       conf.env.append_value('CXXFLAGS',['-mtune=cortex-a8'])
 
 def build(bld):
     bld(features=['cxx'],source=server_sources,name='servotrond')
