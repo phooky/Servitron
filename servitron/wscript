@@ -38,6 +38,5 @@ def configure(conf):
 def build(bld):
     board = bld.options.board
     src = server_sources.union(bld.srcnode.ant_glob('server/{0}_impl/*.cc'.format(board)))
-    print src
-    b = bld(features=['cxx'],source=src,name='servotrond')
+    b = bld.program(features=['cxx'],source=src,target='servotrond')
     pass

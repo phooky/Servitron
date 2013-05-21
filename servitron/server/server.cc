@@ -8,6 +8,8 @@
 #include <iostream>
 
 #include "../include/servitron_cmd.h"
+#include "pinmux.h"
+#include "motor.h"
 
 using namespace std;
 using namespace servitron;
@@ -29,6 +31,16 @@ const uint16_t server_version = SERVER_VERSION;
 const std::string server_msg(SERVER_MESSAGE);
 
 bool processCommand(int sock);
+
+void init() {
+  // Start up backend magic
+  mux::mux_all_pins();
+  motor::init();
+}
+
+void shutdown() {
+  motor::shutdown();
+}
 
 int startSocketServer(const char* sockName) {
   unsigned int listenSock = socket(AF_UNIX, SOCK_STREAM, 0);
@@ -138,5 +150,8 @@ bool processCommand(int sock) {
 }
 
 int main(int argc, char*argv[]) {
-  return startSocketServer(socket_name);
+  init();
+  int rv = startSocketServer(socket_name);
+  shutdown();
+  return rv;
 }
