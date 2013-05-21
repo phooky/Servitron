@@ -1,4 +1,4 @@
-#include "pinmux.h"
+#include "../pinmux.h"
 
 #include <string>
 #include <fstream>

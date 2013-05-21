@@ -7,7 +7,6 @@
 #include <string.h>
 #include <iostream>
 
-#include "pinconfig.h"
 #include "../include/servitron_cmd.h"
 
 using namespace std;
@@ -69,7 +68,6 @@ std::string recvNTStr(int sock) {
   const size_t buflen = 256;
   char buf[buflen];
   size_t idx = 0;
-  for (int i = 0; i < buflen; i++) { buf[i] = '#'; }
   char c;
   while (recv(sock, &c, 1, 0) == 1 && c != '\0') {
     buf[idx++] = c;

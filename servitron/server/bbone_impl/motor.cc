@@ -1,6 +1,6 @@
-#include "motor.h"
+#include "../motor.h"
 #include <stdint.h>
-#include "am335x_regs.h"
+#include "../am335x_regs.h"
 #include "pinconfig.h"
 #include <sys/mman.h>
 #include <sys/types.h>

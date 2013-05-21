@@ -8,10 +8,15 @@ VERSION='0.1'
 scrdir='.'
 blddir='build'
 
-from platform import machine
+import platform
 
 server_sources = set([
     'server/server.cc' ])
+
+board_targets=[
+    'stub',
+    'bbone',
+    'bbb' ]
 
 def options(opt):
     """
@@ -19,14 +24,20 @@ def options(opt):
     the PRU code.
     """
     opt.load('compiler_c++')
+    opt.add_option('-b','--board',help='target hardware (one of '+', '.join(board_targets)+')',choices=board_targets,action='store',default=board_targets[0])
 
 def configure(conf):
-    conf.find_program('pasm.{0}'.format(machine()), var='PASM', path_list='../am335x_pru_package/pru_sw/utils')
+    conf.find_program('pasm.{0}'.format(platform.machine()), var='PASM', path_list='../am335x_pru_package/pru_sw/utils')
     conf.load('compiler_c++')
     conf.env.append_value('CXXFLAGS',['-O2','-Wall'])
-    if machine() == 'armv7l':
-       conf.env.append_value('CXXFLAGS',['-mtune=cortex-a8'])
+    if conf.options.board in ['bbone', 'bbb']:
+        print "ARMv7l"
+        conf.env.append_value('CXXFLAGS',['-mtune=cortex-a8'])
+    print(conf)
 
 def build(bld):
-    bld(features=['cxx'],source=server_sources,name='servotrond')
+    board = bld.options.board
+    src = server_sources.union(bld.srcnode.ant_glob('server/{0}_impl/*.cc'.format(board)))
+    print src
+    b = bld(features=['cxx'],source=src,name='servotrond')
     pass
