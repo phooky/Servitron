@@ -36,7 +36,7 @@ def configure(conf):
     print(conf)
 
 def build(bld):
-    board = bld.options.board
+    board = bld.options.board # how can we sync this with the configuration board selection?
     src = server_sources.union(bld.srcnode.ant_glob('server/{0}_impl/*.cc'.format(board)))
     b = bld.program(features=['cxx'],source=src,target='servotrond')
     pass
