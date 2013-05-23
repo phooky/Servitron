@@ -45,5 +45,5 @@ def build(bld):
     src = server_sources.union(bld.srcnode.ant_glob('server/{0}_impl/*.cc'.format(board)))
     pru_asm = bld.srcnode.ant_glob('server/{0}_impl/*.p'.format(board))
     p = bld(source=pru_asm)
-    b = bld.program(features=['cxx'],source=src,target='servotrond')
+    b = bld.program(features=['cxx'],source=src,target='servitrond')
     pass
