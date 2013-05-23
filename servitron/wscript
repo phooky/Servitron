@@ -9,6 +9,11 @@ scrdir='.'
 blddir='build'
 
 import platform
+import os.path
+
+from waflib import TaskGen
+
+TaskGen.declare_chain(rule='${PASM} -c ${SRC}',ext_in='.p',ext_out='_bin.h')
 
 server_sources = set([
     'server/server.cc' ])
@@ -27,16 +32,18 @@ def options(opt):
     opt.add_option('-b','--board',help='target hardware (one of '+', '.join(board_targets)+')',choices=board_targets,action='store',default=board_targets[0])
 
 def configure(conf):
-    conf.find_program('pasm.{0}'.format(platform.machine()), var='PASM', path_list='../am335x_pru_package/pru_sw/utils')
+    print conf.find_program('pasm.{0}'.format(platform.machine()), var='PASM', path_list=os.path.abspath('../am335x_pru_package/pru_sw/utils'))
+    print conf.env['PASM']
     conf.load('compiler_c++')
     conf.env.append_value('CXXFLAGS',['-O2','-Wall'])
     if conf.options.board in ['bbone', 'bbb']:
         print "ARMv7l"
         conf.env.append_value('CXXFLAGS',['-mtune=cortex-a8'])
-    print(conf)
 
 def build(bld):
     board = bld.options.board # how can we sync this with the configuration board selection?
     src = server_sources.union(bld.srcnode.ant_glob('server/{0}_impl/*.cc'.format(board)))
+    pru_asm = bld.srcnode.ant_glob('server/{0}_impl/*.p'.format(board))
+    p = bld(source=pru_asm)
     b = bld.program(features=['cxx'],source=src,target='servotrond')
     pass
