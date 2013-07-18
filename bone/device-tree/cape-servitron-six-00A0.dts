@@ -12,8 +12,8 @@
     /* state the resources this cape uses or prepare to get winged! */
     exclusive-use =
         /* Quadrature inputs */
-        "P8.8", "P8.9", "P8.10",
-        "P8.28", "P8.29", "P8.30",
+        "P8.7", "P8.8", "P8.9",
+        "P8.10", "P8.18", "P8.30",
         "P8.34", "P8.36", "P8.37",
         "P8.38", "P8.39", "P8.40",
         "P8.41", "P8.42", "P8.43",
@@ -31,12 +31,12 @@
             pruicss_quad_pins: pinmux_pruicss_quad_pins{
                 pinctrl-single,pins = <
                     // Mode is 0x3f: input turned on, pullup off
-                    0x094 0x3f // P8.8  - Q0A - gpmc_oen_ren    GPIO2_3
-                    0x09c 0x3f // P8.9  - Q0B - gpmc_ben0_cle   GPIO2_5
-                    0x098 0x3f // P8.10 - Q0I - gpmc_wen        GPIO2_4
+                    0x090 0x3f // P8.7  - Q0A - gpmc_advn_ale   GPIO2_2
+                    0x094 0x3f // P8.8  - Q0B - gpmc_oen_ren    GPIO2_3
+                    0x09c 0x3f // P8.9  - Q0I - gpmc_ben0_cle   GPIO2_5
 
-                    0x0e8 0x3f // P8.28 - Q1A - lcd_pclk        GPIO2_24
-                    0x0e4 0x3f // P8.29 - Q1B - lcd_hsync       GPIO2_23
+                    0x098 0x3f // P8.10 - Q1A - gpmc_wen        GPIO2_4
+                    0x08c 0x3f // P8.18 - Q1B - gpmc_clk        GPIO2_1
                     0x0ec 0x3f // P8.30 - Q1I - lcd_ac_bias_en  GPIO2_25
 
                     0x0cc 0x3f // P8.34 - Q2A - lcd_data_11     GPIO2_17
