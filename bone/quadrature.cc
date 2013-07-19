@@ -3,32 +3,9 @@
 #include <prussdrv.h>
 #include <pruss_intc_mapping.h>
 #include <stdio.h>
-#include "util.h"
 #include "quad_shared.h"
 
 #define PRU_NUM 0
-
-std::string inputPinNames[] = {
-  "gpmc_ad6",
-  "gpmc_ad7",
-  "gpmc_ad2",
-  "gpmc_ad3",
-  "gpmc_ad13",
-  "gpmc_ad12",
-  "gpmc_ad15",
-  "gpmc_ad14",
-  "gpmc_csn2",
-  "gpmc_csn1",
-  "gpmc_ad5",
-  "gpmc_ad4",
-  "gpmc_ad1",
-  "gpmc_ad0",
-  "gpmc_cns0",
-  "gpmc_ben1",
-  "gpmc_a0",
-  "gpmc_a1",
-  ""
-};
 
 Quadrature::Quadrature() : pru_data_map((uint8_t*)-1) {
 }
@@ -47,13 +24,6 @@ void Quadrature::initChannel(uint8_t ch, uint8_t a, uint8_t b, uint8_t idx) {
 void Quadrature::init() {
     unsigned int ret;
     tpruss_intc_initdata pruss_intc_initdata = PRUSS_INTC_INITDATA;
-
-    // The muxing. Oh, the muxing.
-    std::string *namesIter = inputPinNames;
-    while (! namesIter->empty()) {
-      writePath(std::string("/sys/kernel/debug/omap_mux/")+*namesIter, 0x3f);
-      namesIter++;
-    }
 
     /* Initialize the PRU */
     prussdrv_init ();		
