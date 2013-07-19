@@ -69,15 +69,15 @@
 
             quad_0{
                 pin-names     = "Servi:q0_a", "Servi:q0_b", "Servi:q0_i";
-                gpios         = <&gpio2 3 0x5
-                                &gpio2 5 0x5
-                                &gpio2 4 0x5>; 
+                gpios         = <&gpio2 2 0x5
+                                &gpio2 3 0x5
+                                &gpio2 5 0x5>; 
             };            
 
             quad_1{
                 pin-names     = "Servi:q1_a", "Servi:q1_b", "Servi:q1_i";
-                gpios         = <&gpio2 24 0x5
-                                &gpio2 23 0x5
+                gpios         = <&gpio2 4 0x5
+                                &gpio2 1 0x5
                                 &gpio2 25 0x5>; 
             };            
 
