@@ -4,6 +4,7 @@
 #include <pruss_intc_mapping.h>
 #include <stdio.h>
 #include "util.h"
+#include "quad_shared.h"
 
 #define PRU_NUM 0
 
