@@ -4,6 +4,7 @@ MACHINE=$(shell sh -c 'uname -m')
 
 ifeq ($(MACHINE),armv7l)
 	PLATFORM=arm
+	CFLAGS+=-mtune=cortex-a8 -march=armv7-a
 endif
 ifeq ($(MACHINE),x86_64)
 	PLATFORM=x86
@@ -19,11 +20,11 @@ PASM?=$(PRU_SW)/utils/pasm_2.$(PLATFORM)
 GPP=g++
 GCC=gcc
 
-CFLAGS+= -Wall -I$(INCDIR_APP_LOADER) -D__DEBUG -O2 -mtune=cortex-a8 -march=armv7-a
+CFLAGS+= -Wall -I$(INCDIR_APP_LOADER) -D__DEBUG -O2 
 LDFLAGS+=-L$(LIBDIR_APP_LOADER) -lprussdrv -lpthread
 
 
-TARGETS=quad.bin #brake_test motor_test pwm_test quad_test servo_test quad.bin
+TARGETS=quad.bin quad_test #brake_test motor_test pwm_test quad_test servo_test quad.bin
 BIN=
 
 all: $(TARGETS) $(BIN)

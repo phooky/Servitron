@@ -7,7 +7,7 @@
 #define PRU_CR_CYCLE   0x0c
 
 #include "am335x_regs.h"
-#include "config.h"
+#include "quad_shared.h"
 
 // All quadrature inputs are on port 1
 
