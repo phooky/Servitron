@@ -69,44 +69,44 @@
 
             quad_0{
                 pin-names     = "Servi:q0_a", "Servi:q0_b", "Servi:q0_i";
-                gpios         = <&gpio2 2 0x5
-                                &gpio2 3 0x5
-                                &gpio2 5 0x5>; 
+                gpios         = <&gpio3 2 0x5
+                                &gpio3 3 0x5
+                                &gpio3 5 0x5>; 
             };            
 
             quad_1{
                 pin-names     = "Servi:q1_a", "Servi:q1_b", "Servi:q1_i";
-                gpios         = <&gpio2 4 0x5
-                                &gpio2 1 0x5
-                                &gpio2 25 0x5>; 
+                gpios         = <&gpio3 4 0x5
+                                &gpio3 1 0x5
+                                &gpio3 25 0x5>; 
             };            
 
             quad_2{
                 pin-names     = "Servi:q2_a", "Servi:q2_b", "Servi:q2_i";
-                gpios         = <&gpio2 17 0x5
-                                &gpio2 16 0x5
-                                &gpio2 14 0x5>; 
+                gpios         = <&gpio3 17 0x5
+                                &gpio3 16 0x5
+                                &gpio3 14 0x5>; 
             };            
 
             quad_3{
                 pin-names     = "Servi:q3_a", "Servi:q3_b", "Servi:q3_i";
-                gpios         = <&gpio2 15 0x5
-                                &gpio2 12 0x5
-                                &gpio2 13 0x5>; 
+                gpios         = <&gpio3 15 0x5
+                                &gpio3 12 0x5
+                                &gpio3 13 0x5>; 
             };            
 
             quad_4{
                 pin-names     = "Servi:q4_a", "Servi:q4_b", "Servi:q4_i";
-                gpios         = <&gpio2 10 0x5
-                                &gpio2 11 0x5
-                                &gpio2 8 0x5>; 
+                gpios         = <&gpio3 10 0x5
+                                &gpio3 11 0x5
+                                &gpio3 8 0x5>; 
             };            
 
             quad_5{
                 pin-names     = "Servi:q5_a", "Servi:q5_b", "Servi:q5_i";
-                gpios         = <&gpio2 9 0x5
-                                &gpio2 6 0x5
-                                &gpio2 7 0x5>; 
+                gpios         = <&gpio3 9 0x5
+                                &gpio3 6 0x5
+                                &gpio3 7 0x5>; 
             };            
 
         };
