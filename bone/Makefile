@@ -35,7 +35,7 @@ all: $(TARGETS) $(BIN)
 	$(GPP) $(CFLAGS) -c -o $@ $< $(LDFLAGS)
 
 %.bin: %.p $(DEPS)
-	$(PASM) -b $<
+	$(PASM) -V2 -b $<
 
 
 pwm_test: pwm_test.o pwm.o util.o
