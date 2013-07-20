@@ -18,6 +18,13 @@
         "P8.38", "P8.39", "P8.40",
         "P8.41", "P8.42", "P8.43",
         "P8.44", "P8.45", "P8.46",
+        /* Motor enable (PWM) pins */
+        "P9.22",
+        "P9.21",
+        "P9.14",
+        "P9.16",
+        "P8.19",
+        "P8.13",
         /* Enable and direction pins */
         /* Brake */
         /* Estop/power */
@@ -28,6 +35,16 @@
     fragment@0 {
         target = <&am33xx_pinmux>;
         __overlay__ {
+            motor_pwm_pins: pinmux_motor_pwm_pins{
+                pinctrl-single,pins = <
+                    0x150 0x3 // P9.22 - pwm0a - spi0_sclk
+                    0x154 0x3 // P9.21 - pwm0b - spi0_d0
+                    0x048 0x6 // P9.14 - pwm1a - gpmc_a2
+                    0x04c 0x6 // P9.16 - pwm1b - gpmc_a3
+                    0x020 0x4 // P8.19 - pwm2a - gpmc_ad8
+                    0x024 0x4 // P8.13 - pwm2b - gpmc_ad9
+                >;
+            };
             pruicss_quad_pins: pinmux_pruicss_quad_pins{
                 pinctrl-single,pins = <
                     // Mode is 0x3f: input turned on, pullup off
@@ -108,7 +125,32 @@
                                 &gpio3 6 0x5
                                 &gpio3 7 0x5>; 
             };            
-
         };
+    };
+
+    // Bring up the PWM subsystem and PWM module for all three PWM generators    
+    fragment@2 {
+        target = <&epwmss0>;
+        __overlay__ { status = "okay"; };
+    };
+    fragment@3 {
+        target = <&ehrpwm0>;
+        __overlay__ { status = "okay"; };
+    };
+    fragment@4 {
+        target = <&epwmss1>;
+        __overlay__ { status = "okay"; };
+    };
+    fragment@5 {
+        target = <&ehrpwm1>;
+        __overlay__ { status = "okay"; };
+    };
+    fragment@6 {
+        target = <&epwmss2>;
+        __overlay__ { status = "okay"; };
+    };
+    fragment@7 {
+        target = <&ehrpwm2>;
+        __overlay__ { status = "okay"; };
     };
 };
