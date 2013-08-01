@@ -20,7 +20,7 @@
     .u16  errCount
 .ends
 
-.assign QuadState, r20, r22.w0, ch
+.assign QuadState, r20, r22.w0, ch  // r20 - r22.w0 <- current axis state
 
 START:
 // On the PRUv2 (PRU-ICSS version), C4 is the constant
@@ -31,25 +31,27 @@ START:
     CLR r0, r0, 4
     SBCO r0, C4, 4, 4
 
-// set inputs
-    mov r17, GPIO2_BASE | GPIO_OE
-    lbbo r16, r17, 0, 4  // r16 <- output enable register
-    mov r19, QUAD_STATE_BASE
-    mov r18, QUAD_COUNT
-init_channel:
-    lbbo ch, r19, 0, SIZE(QuadState)
-    set r16, r16, ch.pinA
-    set r16, r16, ch.pinB
-    set r16, r16, ch.pinIdx
-    add r19, r19, SIZE(QuadState)
-    sub r18, r18, 1
-    qbne init_channel, r18, 0
+    // The next section may be obsolete if the quadrature
+    // pins are correctly muxed by the device tree.
 
-// update the output enable register
-    sbbo r16, r17, 0, 4
-// load quadrature table
-    mov r14, 0x1b8d72e4
-    mov r1, 0x000f0000
+    // Set all GPIO2 pins as inputs.
+    mov r17, GPIO2_BASE | GPIO_OE       // r17 <- address of gpio2 output enable reg
+    lbbo r16, r17, 0, 4                 // r16 <- output enable register
+    mov r19, QUAD_STATE_BASE            // r19 <- address of current axis 
+    mov r18, QUAD_COUNT                 // r18 <- loop counter
+
+init_channel:
+    // Initialize the direction of each pin
+    lbbo ch, r19, 0, SIZE(QuadState)    // load current axis state
+    set r16, r16, ch.pinA               // \
+    set r16, r16, ch.pinB               // -- set direction bit for each pin
+    set r16, r16, ch.pinIdx             // /
+    add r19, r19, SIZE(QuadState)       // increment current axis addresss
+    sub r18, r18, 1                     // decrement loop counter
+    qbne init_channel, r18, 0           // next axis
+   
+    sbbo r16, r17, 0, 4                 // store r16 to the gpio2 output enable reg
+    mov r14, 0x1b8d72e4                 // r14 <- quadrature state table
 
 // r6 will hold the value of the cycle time throughout.
 // To change the cycle time, you'll need to restart
