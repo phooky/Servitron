@@ -20,7 +20,13 @@
     .u16  errCount
 .ends
 
+.struct Report
+    .u32  position
+    .u16  errCount
+.ends
+
 .assign QuadState, r20, r22.w0, ch  // r20 - r22.w0 <- current axis state
+.assign Report, r28, r29.w0, report // r28 - r29.w0 <- current report
 
 START:
 // On the PRUv2 (PRU-ICSS version), C4 is the constant
@@ -125,6 +131,18 @@ sw_end:
     qbne skip_report, r26.b0, 0xff      // skip report if not ready
 
     // build report
+    mov r19, QUAD_STATE_BASE            // r19 <- address of current channel 
+    mov r18, QUAD_COUNT                 // r18 <- loop counter
+    mov r26, REPORT_BASE
+report_ch:
+    lbbo report.position, r19, 0, 4     // load channel position
+    lbbo report.errCount, r19, 8, 4     // load channel errCount
+    sbbo report, r26, 0, SIZE(Report)   // store report
+    add r19, r19, SIZE(QuadState)       // increment current channel addresss
+    add r26, r26, SIZE(Report)          // increment report addresss
+    sub r18, r18, 1                     // decrement loop counter
+    qbne report_ch, r18, 0              // next channel
+
     sbbo r24, r25, 0, 1                 // report status <- r24
     mov r24, 0                          // reset r24
 
