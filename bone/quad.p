@@ -53,7 +53,7 @@ init_channel:
     sbbo r16, r17, 0, 4                 // store r16 to the gpio2 output enable reg
     mov r14, 0x1b8d72e4                 // r14 <- quadrature state table
 
-    mov r7, CYCLE_COUNT_BASE            // r7 <- address in sram of cycles/report
+    mov r7, CYCLE_COUNT_ADDR            // r7 <- address in sram of cycles/report
     lbbo r6, r7, 0, 4                   // r6 <- cycles/report as spec. by user
 
                                         // Turn on the PRU cycle counters
