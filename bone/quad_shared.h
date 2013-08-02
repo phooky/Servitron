@@ -7,6 +7,19 @@
 #define QUAD_COUNT 6
 
 #define QUAD_STATE_BASE 0x00
+/**
+ * Quadrature channel state:
+ *     0       1       2       3
+ * ---------------------------------
+ * |       channel position        |
+ * ---------------------------------
+ * | state | pin A | pin B | pin I |
+ * ---------------------------------
+ * |  error count  |
+ * -----------------
+ *
+ */
+
 #define CYCLE_COUNT_BASE 0xfc
 #define REPORT_BASE 0x100
 

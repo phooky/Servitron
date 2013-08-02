@@ -96,8 +96,7 @@ sw_2:
 sw_3:
     qbne sw_end, r13, 3                 // if r13 == 3 then position unchanged
 
-                                        // otherwise, an error has occurred
-                                        // (not currently logged!)
+    add ch.errCount, ch.errCount, 1     // otherwise, an error has occurred
 sw_end:
 
     mov ch.state, r15.b0                // new state <- r15.b0
