@@ -136,7 +136,7 @@ sw_end:
     mov r26, REPORT_BASE
 report_ch:
     lbbo report.position, r19, 0, 4     // load channel position
-    lbbo report.errCount, r19, 8, 4     // load channel errCount
+    lbbo report.errCount, r19, 8, 2     // load channel errCount
     sbbo report, r26, 0, SIZE(Report)   // store report
     add r19, r19, SIZE(QuadState)       // increment current channel addresss
     add r26, r26, SIZE(Report)          // increment report addresss

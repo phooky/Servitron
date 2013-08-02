@@ -13,7 +13,13 @@ typedef struct {
 } __attribute__((packed)) QuadState;
 
 typedef struct {
-  QuadState state[6];
+  int32_t position;
+  uint16_t errors;
+} __attribute__((packed)) ChannelReport;
+
+typedef struct {
+  ChannelReport channel[6];
+  uint8_t cycles;
 } __attribute__((packed)) Report;
 
 class Quadrature {

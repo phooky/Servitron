@@ -48,20 +48,23 @@ void Quadrature::init() {
     initChannel(5, Q5A, Q5B, Q5I);
 
     /* Set update period */
-    *(uint32_t*)(pru_data_map + CYCLE_COUNT_BASE) = 0x30d40; // 0xbebc200;
+    *(uint32_t*)(pru_data_map + CYCLE_COUNT_ADDR) = 0x30d40; // 0xbebc200;
 
     /* Execute quadrature peripheral on PRU */
     prussdrv_exec_program (PRU_NUM, "./quad.bin");
 }
 
 Report Quadrature::getNextReport() {
+    /* Indicate to PRU that we're ready for the next report */
+    uint8_t* pStatus = (uint8_t*)pru_data_map + REPORT_STATUS_ADDR;
+    *pStatus = 0xff;
 
-    /* Wait until PRU0 has finished execution */
+    /* Wait until PRU0 has finished report */
     prussdrv_pru_wait_event (PRU_EVTOUT_0);
     QuadState* qs = (QuadState*)(pru_data_map + QUAD_STATE_BASE);
-    Report r = *((Report*)(pru_data_map + QUAD_STATE_BASE));// REPORT_BASE));
+    Report r = *((Report*)(pru_data_map + REPORT_BASE));
     prussdrv_pru_clear_event (PRU0_ARM_INTERRUPT);
-
+    r.cycles = *pStatus;
     return r;
 }
 
