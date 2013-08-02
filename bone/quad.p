@@ -39,7 +39,7 @@ START:
     lbbo r16, r17, 0, 4                 // r16 <- output enable register
     mov r19, QUAD_STATE_BASE            // r19 <- address of current channel 
     mov r18, QUAD_COUNT                 // r18 <- loop counter
-
+    mov r24, 0                          // r24 <- interrupts since last report
 init_channel:
     // Initialize the direction of each pin
     lbbo ch, r19, 0, SIZE(QuadState)    // load current channel state
@@ -118,8 +118,15 @@ sw_end:
     set r9, r9, 3                       // enable COUNTENABLE pin
     sbbo r9, r7, PRU_CR_CONTROL, 4      // PRU control register <- r9
 
+    add r24, r24, 1
 
-    // TODO: copy report, check retrieve bit?
+    mov r25, REPORT_STATUS_ADDR         // r25 <- address in sram of report status
+    lbbo r26.b0, r25, 0, 1              // r26 <- report flag
+    qbne skip_report, r26.b0, 0xff      // skip report if not ready
+
+    // build report
+    sbbo r24, r25, 0, 1                 // report status <- r24
+    mov r24, 0                          // reset r24
 
     MOV R31.b0, PRU0_ARM_INTERRUPT+16   // Send interrupt to cortex-a8
     jmp outer_loop                      // back to loop
