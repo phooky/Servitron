@@ -18411,168 +18411,168 @@ www.irf.com&lt;p&gt;
 <label x="-60.96" y="-7.62" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M2-PWM" class="0">
+<net name="M1_PWM" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="EHRPWM1A"/>
 <wire x1="-50.8" y1="81.28" x2="-43.18" y2="81.28" width="0.1524" layer="91"/>
 <label x="-43.18" y="81.28" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M3-PWM" class="0">
+<net name="M0_PWM" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="EHRPWM1B"/>
 <wire x1="-50.8" y1="78.74" x2="-43.18" y2="78.74" width="0.1524" layer="91"/>
 <label x="-43.18" y="78.74" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M4-PWM" class="0">
+<net name="M3_PWM" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="UART2_TXD"/>
 <wire x1="-96.52" y1="71.12" x2="-104.14" y2="71.12" width="0.1524" layer="91"/>
 <label x="-104.14" y="71.12" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M5-PWM" class="0">
+<net name="M2_PWM" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="UART2_RXD"/>
 <wire x1="-50.8" y1="71.12" x2="-43.18" y2="71.12" width="0.1524" layer="91"/>
 <label x="-43.18" y="71.12" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M1-PWM" class="0">
+<net name="M4_PWM" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="EHRPWM2A"/>
 <wire x1="30.48" y1="73.66" x2="22.86" y2="73.66" width="0.1524" layer="91"/>
 <label x="22.86" y="73.66" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M0-PWM" class="0">
+<net name="M5_PWM" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="EHRPWM2B"/>
 <wire x1="30.48" y1="81.28" x2="22.86" y2="81.28" width="0.1524" layer="91"/>
 <label x="22.86" y="81.28" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M0-B" class="0">
+<net name="M5_A" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="GPIO1_13"/>
 <wire x1="30.48" y1="83.82" x2="22.86" y2="83.82" width="0.1524" layer="91"/>
 <label x="22.86" y="83.82" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M0-A" class="0">
+<net name="M5_B" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="GPIO1_15"/>
 <wire x1="30.48" y1="78.74" x2="22.86" y2="78.74" width="0.1524" layer="91"/>
 <label x="22.86" y="78.74" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M0-EN" class="0">
+<net name="M5_EN" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="GPIO0_27"/>
 <wire x1="30.48" y1="76.2" x2="22.86" y2="76.2" width="0.1524" layer="91"/>
 <label x="22.86" y="76.2" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M1-EN" class="0">
+<net name="M4_EN" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="GPIO1_12"/>
 <wire x1="76.2" y1="83.82" x2="83.82" y2="83.82" width="0.1524" layer="91"/>
 <label x="83.82" y="83.82" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M1-A" class="0">
+<net name="M4_B" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="GPIO0_26"/>
 <wire x1="76.2" y1="81.28" x2="83.82" y2="81.28" width="0.1524" layer="91"/>
 <label x="83.82" y="81.28" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M1-B" class="0">
+<net name="M4_A" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="GPIO1_14"/>
 <wire x1="76.2" y1="78.74" x2="83.82" y2="78.74" width="0.1524" layer="91"/>
 <label x="83.82" y="78.74" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M2-A" class="0">
+<net name="M1_B" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="UART4_RXD"/>
 <wire x1="-96.52" y1="83.82" x2="-104.14" y2="83.82" width="0.1524" layer="91"/>
 <label x="-104.14" y="83.82" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M2-B" class="0">
+<net name="M1_A" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="UART4_TXD"/>
 <wire x1="-96.52" y1="81.28" x2="-104.14" y2="81.28" width="0.1524" layer="91"/>
 <label x="-104.14" y="81.28" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M2-EN" class="0">
+<net name="M1_EN" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="GPIO1_28"/>
 <wire x1="-50.8" y1="83.82" x2="-43.18" y2="83.82" width="0.1524" layer="91"/>
 <label x="-43.18" y="83.82" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M3-EN" class="0">
+<net name="M0_EN" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="I2C1_SDA"/>
 <wire x1="-50.8" y1="76.2" x2="-43.18" y2="76.2" width="0.1524" layer="91"/>
 <label x="-43.18" y="76.2" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M3-A" class="0">
+<net name="M0_B" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="GPIO1_16"/>
 <wire x1="-96.52" y1="78.74" x2="-104.14" y2="78.74" width="0.1524" layer="91"/>
 <label x="-104.14" y="78.74" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M3-B" class="0">
+<net name="M0_A" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="I2C1_SCL"/>
 <wire x1="-96.52" y1="76.2" x2="-104.14" y2="76.2" width="0.1524" layer="91"/>
 <label x="-104.14" y="76.2" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M4-A" class="0">
+<net name="M3_B" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="GPIO1_17"/>
 <wire x1="-96.52" y1="68.58" x2="-104.14" y2="68.58" width="0.1524" layer="91"/>
 <label x="-104.14" y="68.58" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M4-B" class="0">
+<net name="M3_A" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="GPIO3_19"/>
 <wire x1="-96.52" y1="63.5" x2="-104.14" y2="63.5" width="0.1524" layer="91"/>
 <label x="-104.14" y="63.5" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="M5-A" class="0">
+<net name="M2_B" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="UART1_TXD"/>
 <wire x1="-50.8" y1="68.58" x2="-43.18" y2="68.58" width="0.1524" layer="91"/>
 <label x="-43.18" y="68.58" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M5-B" class="0">
+<net name="M2_A" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="UART1_RXD"/>
 <wire x1="-50.8" y1="66.04" x2="-43.18" y2="66.04" width="0.1524" layer="91"/>
 <label x="-43.18" y="66.04" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M5-EN" class="0">
+<net name="M2_EN" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="SPI1_DI"/>
 <wire x1="-50.8" y1="60.96" x2="-43.18" y2="60.96" width="0.1524" layer="91"/>
 <label x="-43.18" y="60.96" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="M4-EN" class="0">
+<net name="M3_EN" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="SPI1_DO"/>
 <wire x1="-96.52" y1="60.96" x2="-104.14" y2="60.96" width="0.1524" layer="91"/>
@@ -18668,7 +18668,6 @@ www.irf.com&lt;p&gt;
 <text x="190.5" y="160.02" size="3.81" layer="97">MOTOR 4</text>
 <text x="297.18" y="160.02" size="3.81" layer="97">MOTOR 1</text>
 <text x="401.32" y="160.02" size="3.81" layer="97">MOTOR 0</text>
-<text x="403.86" y="2.54" size="3.81" layer="97">MOTOR 0</text>
 <text x="86.36" y="17.78" size="3.81" layer="97">MOTOR 3</text>
 <text x="190.5" y="17.78" size="3.81" layer="97">MOTOR 2</text>
 </plain>
@@ -19737,172 +19736,172 @@ www.irf.com&lt;p&gt;
 <junction x="261.62" y="45.72"/>
 </segment>
 </net>
-<net name="M0-EN" class="0">
+<net name="M5_EN" class="0">
 <segment>
 <pinref part="IC1" gate="A" pin="A1"/>
 <wire x1="111.76" y1="50.8" x2="111.76" y2="43.18" width="0.1524" layer="91"/>
 <label x="111.76" y="43.18" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M0-A" class="0">
-<segment>
-<pinref part="IC1" gate="A" pin="A2"/>
-<wire x1="114.3" y1="50.8" x2="114.3" y2="43.18" width="0.1524" layer="91"/>
-<label x="114.3" y="43.18" size="1.27" layer="95" rot="R270" xref="yes"/>
-</segment>
-</net>
-<net name="M0-PWM" class="0">
+<net name="M5_PWM" class="0">
 <segment>
 <pinref part="IC1" gate="A" pin="A3"/>
 <wire x1="116.84" y1="50.8" x2="116.84" y2="43.18" width="0.1524" layer="91"/>
 <label x="116.84" y="43.18" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M0-B" class="0">
+<net name="M5_A" class="0">
 <segment>
 <pinref part="IC1" gate="A" pin="A4"/>
 <wire x1="119.38" y1="50.8" x2="119.38" y2="43.18" width="0.1524" layer="91"/>
 <label x="119.38" y="43.18" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M1-EN" class="0">
+<net name="M4_EN" class="0">
 <segment>
 <pinref part="IC1" gate="A" pin="A5"/>
 <wire x1="121.92" y1="50.8" x2="121.92" y2="43.18" width="0.1524" layer="91"/>
 <label x="121.92" y="43.18" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M1-A" class="0">
+<net name="M4_B" class="0">
 <segment>
 <pinref part="IC1" gate="A" pin="A6"/>
 <wire x1="124.46" y1="50.8" x2="124.46" y2="43.18" width="0.1524" layer="91"/>
 <label x="124.46" y="43.18" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M1-PWM" class="0">
-<segment>
-<pinref part="IC1" gate="A" pin="A7"/>
-<wire x1="127" y1="50.8" x2="127" y2="43.18" width="0.1524" layer="91"/>
-<label x="127" y="43.18" size="1.27" layer="95" rot="R270" xref="yes"/>
-</segment>
-</net>
-<net name="M1-B" class="0">
+<net name="M4_A" class="0">
 <segment>
 <pinref part="IC1" gate="A" pin="A8"/>
 <wire x1="129.54" y1="50.8" x2="129.54" y2="43.18" width="0.1524" layer="91"/>
 <label x="129.54" y="43.18" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M2-EN" class="0">
+<net name="M1_EN" class="0">
 <segment>
 <pinref part="IC2" gate="A" pin="A1"/>
 <wire x1="332.74" y1="53.34" x2="332.74" y2="40.64" width="0.1524" layer="91"/>
 <label x="332.74" y="40.64" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M2-A" class="0">
+<net name="M1_B" class="0">
 <segment>
 <pinref part="IC2" gate="A" pin="A2"/>
 <wire x1="335.28" y1="53.34" x2="335.28" y2="40.64" width="0.1524" layer="91"/>
 <label x="335.28" y="40.64" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M2-PWM" class="0">
+<net name="M1_PWM" class="0">
 <segment>
 <pinref part="IC2" gate="A" pin="A3"/>
 <wire x1="337.82" y1="53.34" x2="337.82" y2="40.64" width="0.1524" layer="91"/>
 <label x="337.82" y="40.64" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M2-B" class="0">
+<net name="M1_A" class="0">
 <segment>
 <pinref part="IC2" gate="A" pin="A4"/>
 <wire x1="340.36" y1="53.34" x2="340.36" y2="40.64" width="0.1524" layer="91"/>
 <label x="340.36" y="40.64" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M3-EN" class="0">
+<net name="M0_EN" class="0">
 <segment>
 <pinref part="IC2" gate="A" pin="A5"/>
 <wire x1="342.9" y1="53.34" x2="342.9" y2="40.64" width="0.1524" layer="91"/>
 <label x="342.9" y="40.64" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M3-A" class="0">
+<net name="M0_B" class="0">
 <segment>
 <pinref part="IC2" gate="A" pin="A6"/>
 <wire x1="345.44" y1="53.34" x2="345.44" y2="40.64" width="0.1524" layer="91"/>
 <label x="345.44" y="40.64" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M3-PWM" class="0">
+<net name="M0_PWM" class="0">
 <segment>
 <pinref part="IC2" gate="A" pin="A7"/>
 <wire x1="347.98" y1="53.34" x2="347.98" y2="40.64" width="0.1524" layer="91"/>
 <label x="347.98" y="40.64" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M3-B" class="0">
+<net name="M0_A" class="0">
 <segment>
 <pinref part="IC2" gate="A" pin="A8"/>
 <wire x1="350.52" y1="53.34" x2="350.52" y2="40.64" width="0.1524" layer="91"/>
 <label x="350.52" y="40.64" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M4-EN" class="0">
+<net name="M3_EN" class="0">
 <segment>
 <pinref part="IC3" gate="A" pin="A1"/>
 <wire x1="109.22" y1="-91.44" x2="109.22" y2="-99.06" width="0.1524" layer="91"/>
 <label x="109.22" y="-99.06" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M4-A" class="0">
+<net name="M3_B" class="0">
 <segment>
 <pinref part="IC3" gate="A" pin="A2"/>
 <wire x1="111.76" y1="-91.44" x2="111.76" y2="-99.06" width="0.1524" layer="91"/>
 <label x="111.76" y="-99.06" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M4-PWM" class="0">
+<net name="M3_PWM" class="0">
 <segment>
 <pinref part="IC3" gate="A" pin="A3"/>
 <wire x1="114.3" y1="-91.44" x2="114.3" y2="-99.06" width="0.1524" layer="91"/>
 <label x="114.3" y="-99.06" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M4-B" class="0">
-<segment>
-<pinref part="IC3" gate="A" pin="A4"/>
-<wire x1="116.84" y1="-91.44" x2="116.84" y2="-99.06" width="0.1524" layer="91"/>
-<label x="116.84" y="-99.06" size="1.27" layer="95" rot="R270" xref="yes"/>
-</segment>
-</net>
-<net name="M5-EN" class="0">
+<net name="M2_EN" class="0">
 <segment>
 <pinref part="IC3" gate="A" pin="A5"/>
 <wire x1="119.38" y1="-91.44" x2="119.38" y2="-99.06" width="0.1524" layer="91"/>
 <label x="119.38" y="-99.06" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M5-A" class="0">
+<net name="M2_B" class="0">
 <segment>
 <pinref part="IC3" gate="A" pin="A6"/>
 <wire x1="121.92" y1="-91.44" x2="121.92" y2="-99.06" width="0.1524" layer="91"/>
 <label x="121.92" y="-99.06" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M5-PWM" class="0">
+<net name="M2_PWM" class="0">
 <segment>
 <pinref part="IC3" gate="A" pin="A7"/>
 <wire x1="124.46" y1="-91.44" x2="124.46" y2="-99.06" width="0.1524" layer="91"/>
 <label x="124.46" y="-99.06" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="M5-B" class="0">
+<net name="M2_A" class="0">
 <segment>
 <pinref part="IC3" gate="A" pin="A8"/>
 <wire x1="127" y1="-91.44" x2="127" y2="-99.06" width="0.1524" layer="91"/>
 <label x="127" y="-99.06" size="1.27" layer="95" rot="R270" xref="yes"/>
+</segment>
+</net>
+<net name="M5_B" class="0">
+<segment>
+<pinref part="IC1" gate="A" pin="A2"/>
+<wire x1="114.3" y1="50.8" x2="114.3" y2="43.18" width="0.1524" layer="91"/>
+<label x="114.3" y="43.18" size="1.27" layer="95" rot="R270" xref="yes"/>
+</segment>
+</net>
+<net name="M4_PWM" class="0">
+<segment>
+<pinref part="IC1" gate="A" pin="A7"/>
+<wire x1="127" y1="50.8" x2="127" y2="43.18" width="0.1524" layer="91"/>
+<label x="127" y="43.18" size="1.27" layer="95" rot="R270" xref="yes"/>
+</segment>
+</net>
+<net name="M3_A" class="0">
+<segment>
+<pinref part="IC3" gate="A" pin="A4"/>
+<wire x1="116.84" y1="-91.44" x2="116.84" y2="-99.06" width="0.1524" layer="91"/>
+<label x="116.84" y="-99.06" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 </nets>
