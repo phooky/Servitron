@@ -18664,6 +18664,13 @@ www.irf.com&lt;p&gt;
 </sheet>
 <sheet>
 <plain>
+<text x="86.36" y="160.02" size="3.81" layer="97">MOTOR 5</text>
+<text x="190.5" y="160.02" size="3.81" layer="97">MOTOR 4</text>
+<text x="297.18" y="160.02" size="3.81" layer="97">MOTOR 1</text>
+<text x="401.32" y="160.02" size="3.81" layer="97">MOTOR 0</text>
+<text x="403.86" y="2.54" size="3.81" layer="97">MOTOR 0</text>
+<text x="86.36" y="17.78" size="3.81" layer="97">MOTOR 3</text>
+<text x="190.5" y="17.78" size="3.81" layer="97">MOTOR 2</text>
 </plain>
 <instances>
 <instance part="U$6" gate="G$1" x="78.74" y="137.16"/>
@@ -19140,14 +19147,14 @@ www.irf.com&lt;p&gt;
 <junction x="68.58" y="101.6"/>
 </segment>
 </net>
-<net name="OUT0A" class="1">
+<net name="OUT-5B" class="1">
 <segment>
 <pinref part="U$6" gate="G$1" pin="OUT_A"/>
 <wire x1="48.26" y1="137.16" x2="40.64" y2="137.16" width="0.1524" layer="91"/>
 <label x="40.64" y="137.16" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="OUT0B" class="1">
+<net name="OUT-5A" class="1">
 <segment>
 <pinref part="U$6" gate="G$1" pin="OUT_B"/>
 <wire x1="109.22" y1="137.16" x2="116.84" y2="137.16" width="0.1524" layer="91"/>
@@ -19198,14 +19205,14 @@ www.irf.com&lt;p&gt;
 <junction x="172.72" y="101.6"/>
 </segment>
 </net>
-<net name="OUT1A" class="1">
+<net name="OUT-4B" class="1">
 <segment>
 <pinref part="U$7" gate="G$1" pin="OUT_A"/>
 <wire x1="152.4" y1="137.16" x2="144.78" y2="132.08" width="0.1524" layer="91"/>
 <label x="144.78" y="132.08" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="OUT1B" class="1">
+<net name="OUT-4A" class="1">
 <segment>
 <pinref part="U$7" gate="G$1" pin="OUT_B"/>
 <wire x1="213.36" y1="137.16" x2="220.98" y2="137.16" width="0.1524" layer="91"/>
@@ -19232,14 +19239,14 @@ www.irf.com&lt;p&gt;
 <junction x="279.4" y="101.6"/>
 </segment>
 </net>
-<net name="OUT2A" class="1">
+<net name="OUT-1B" class="1">
 <segment>
 <pinref part="U$8" gate="G$1" pin="OUT_A"/>
 <wire x1="259.08" y1="137.16" x2="251.46" y2="132.08" width="0.1524" layer="91"/>
 <label x="251.46" y="132.08" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="OUT2B" class="1">
+<net name="OUT-1A" class="1">
 <segment>
 <pinref part="U$8" gate="G$1" pin="OUT_B"/>
 <wire x1="320.04" y1="137.16" x2="327.66" y2="137.16" width="0.1524" layer="91"/>
@@ -19290,14 +19297,14 @@ www.irf.com&lt;p&gt;
 <junction x="383.54" y="101.6"/>
 </segment>
 </net>
-<net name="OUT3A" class="1">
+<net name="OUT-0B" class="1">
 <segment>
 <pinref part="U$9" gate="G$1" pin="OUT_A"/>
 <wire x1="363.22" y1="137.16" x2="355.6" y2="132.08" width="0.1524" layer="91"/>
 <label x="355.6" y="132.08" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="OUT3B" class="1">
+<net name="OUT-0A" class="1">
 <segment>
 <pinref part="U$9" gate="G$1" pin="OUT_B"/>
 <wire x1="424.18" y1="137.16" x2="431.8" y2="137.16" width="0.1524" layer="91"/>
@@ -19324,14 +19331,14 @@ www.irf.com&lt;p&gt;
 <junction x="68.58" y="-40.64"/>
 </segment>
 </net>
-<net name="OUT4A" class="1">
+<net name="OUT-3B" class="1">
 <segment>
 <pinref part="U$10" gate="G$1" pin="OUT_A"/>
 <wire x1="48.26" y1="-5.08" x2="40.64" y2="-5.08" width="0.1524" layer="91"/>
 <label x="40.64" y="-5.08" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="OUT4B" class="1">
+<net name="OUT-3A" class="1">
 <segment>
 <pinref part="U$10" gate="G$1" pin="OUT_B"/>
 <wire x1="109.22" y1="-5.08" x2="116.84" y2="-5.08" width="0.1524" layer="91"/>
@@ -19382,14 +19389,14 @@ www.irf.com&lt;p&gt;
 <junction x="172.72" y="-40.64"/>
 </segment>
 </net>
-<net name="OUT5A" class="1">
+<net name="OUT-2B" class="1">
 <segment>
 <pinref part="U$11" gate="G$1" pin="OUT_A"/>
 <wire x1="152.4" y1="-5.08" x2="147.32" y2="-5.08" width="0.1524" layer="91"/>
 <label x="147.32" y="-5.08" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="OUT5B" class="1">
+<net name="OUT-2A" class="1">
 <segment>
 <pinref part="U$11" gate="G$1" pin="OUT_B"/>
 <wire x1="213.36" y1="-5.08" x2="220.98" y2="-5.08" width="0.1524" layer="91"/>
@@ -20007,84 +20014,84 @@ www.irf.com&lt;p&gt;
 <wire x1="111.76" y1="66.04" x2="111.76" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="OUT0A" class="1">
+<net name="OUT-5B" class="1">
 <segment>
 <wire x1="27.94" y1="88.9" x2="20.32" y2="88.9" width="0.1524" layer="91"/>
 <label x="20.32" y="88.9" size="2.54" layer="95" rot="R180" xref="yes"/>
 <pinref part="M0-CONN" gate="G$1" pin="P$1"/>
 </segment>
 </net>
-<net name="OUT0B" class="1">
+<net name="OUT-5A" class="1">
 <segment>
 <wire x1="27.94" y1="83.82" x2="20.32" y2="83.82" width="0.1524" layer="91"/>
 <label x="20.32" y="83.82" size="2.54" layer="95" rot="R180" xref="yes"/>
 <pinref part="M0-CONN" gate="G$1" pin="P$2"/>
 </segment>
 </net>
-<net name="OUT1A" class="1">
+<net name="OUT-4B" class="1">
 <segment>
 <wire x1="20.32" y1="78.74" x2="27.94" y2="78.74" width="0.1524" layer="91"/>
 <label x="20.32" y="78.74" size="2.54" layer="95" rot="R180" xref="yes"/>
 <pinref part="M0-CONN1" gate="G$1" pin="P$1"/>
 </segment>
 </net>
-<net name="OUT1B" class="1">
+<net name="OUT-4A" class="1">
 <segment>
 <wire x1="20.32" y1="73.66" x2="27.94" y2="73.66" width="0.1524" layer="91"/>
 <label x="20.32" y="73.66" size="2.54" layer="95" rot="R180" xref="yes"/>
 <pinref part="M0-CONN1" gate="G$1" pin="P$2"/>
 </segment>
 </net>
-<net name="OUT2A" class="1">
+<net name="OUT-1B" class="1">
 <segment>
 <wire x1="20.32" y1="68.58" x2="27.94" y2="68.58" width="0.1524" layer="91"/>
 <label x="20.32" y="68.58" size="2.54" layer="95" rot="R180" xref="yes"/>
 <pinref part="M0-CONN2" gate="G$1" pin="P$1"/>
 </segment>
 </net>
-<net name="OUT2B" class="1">
+<net name="OUT-1A" class="1">
 <segment>
 <wire x1="20.32" y1="63.5" x2="27.94" y2="63.5" width="0.1524" layer="91"/>
 <label x="20.32" y="63.5" size="2.54" layer="95" rot="R180" xref="yes"/>
 <pinref part="M0-CONN2" gate="G$1" pin="P$2"/>
 </segment>
 </net>
-<net name="OUT3A" class="1">
+<net name="OUT-0B" class="1">
 <segment>
 <wire x1="20.32" y1="58.42" x2="27.94" y2="58.42" width="0.1524" layer="91"/>
 <label x="20.32" y="58.42" size="2.54" layer="95" rot="R180" xref="yes"/>
 <pinref part="M0-CONN3" gate="G$1" pin="P$1"/>
 </segment>
 </net>
-<net name="OUT3B" class="1">
+<net name="OUT-0A" class="1">
 <segment>
 <wire x1="20.32" y1="53.34" x2="27.94" y2="53.34" width="0.1524" layer="91"/>
 <label x="20.32" y="53.34" size="2.54" layer="95" rot="R180" xref="yes"/>
 <pinref part="M0-CONN3" gate="G$1" pin="P$2"/>
 </segment>
 </net>
-<net name="OUT4A" class="1">
+<net name="OUT-3B" class="1">
 <segment>
 <wire x1="20.32" y1="48.26" x2="27.94" y2="48.26" width="0.1524" layer="91"/>
 <label x="20.32" y="48.26" size="2.54" layer="95" rot="R180" xref="yes"/>
 <pinref part="M0-CONN4" gate="G$1" pin="P$1"/>
 </segment>
 </net>
-<net name="OUT4B" class="1">
+<net name="OUT-3A" class="1">
 <segment>
 <wire x1="20.32" y1="43.18" x2="27.94" y2="43.18" width="0.1524" layer="91"/>
 <label x="20.32" y="43.18" size="2.54" layer="95" rot="R180" xref="yes"/>
 <pinref part="M0-CONN4" gate="G$1" pin="P$2"/>
 </segment>
 </net>
-<net name="OUT5A" class="1">
+<net name="OUT-2B" class="1">
 <segment>
 <wire x1="20.32" y1="38.1" x2="27.94" y2="38.1" width="0.1524" layer="91"/>
 <label x="20.32" y="38.1" size="2.54" layer="95" rot="R180" xref="yes"/>
 <pinref part="M0-CONN5" gate="G$1" pin="P$1"/>
 </segment>
 </net>
-<net name="OUT5B" class="1">
+<net name="OUT-2A" class="1">
 <segment>
 <wire x1="20.32" y1="33.02" x2="27.94" y2="33.02" width="0.1524" layer="91"/>
 <label x="20.32" y="33.02" size="2.54" layer="95" rot="R180" xref="yes"/>

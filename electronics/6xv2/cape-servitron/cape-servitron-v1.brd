@@ -4812,7 +4812,7 @@ design rules under a new name.</description>
 <wire x1="20.32" y1="95.6056" x2="20.32" y2="95.57" width="0.2032" layer="1"/>
 <wire x1="15.2908" y1="95.6564" x2="15.24" y2="95.57" width="0.2032" layer="1"/>
 </signal>
-<signal name="OUT0A" class="1">
+<signal name="OUT-5B" class="1">
 <contactref element="U$6" pad="P$1" route="any" routetag="OUT_A"/>
 <contactref element="U$6" pad="P$25" route="any" routetag="OUT_A"/>
 <contactref element="U$6" pad="P$30" route="any" routetag="OUT_A"/>
@@ -4840,7 +4840,7 @@ design rules under a new name.</description>
 <vertex x="16.51" y="124.46"/>
 </polygon>
 </signal>
-<signal name="OUT0B" class="1">
+<signal name="OUT-5A" class="1">
 <contactref element="U$6" pad="P$15" route="any" routetag="OUT_B"/>
 <contactref element="U$6" pad="P$16" route="any" routetag="OUT_B"/>
 <contactref element="U$6" pad="P$21" route="any" routetag="OUT_B"/>
@@ -4926,7 +4926,7 @@ design rules under a new name.</description>
 <wire x1="48.26" y1="91.1352" x2="48.26" y2="91.12" width="0.2032" layer="1"/>
 <wire x1="43.2308" y1="91.1352" x2="43.18" y2="91.12" width="0.2032" layer="1"/>
 </signal>
-<signal name="OUT1A" class="1">
+<signal name="OUT-4B" class="1">
 <contactref element="U$7" pad="P$1" route="any" routetag="OUT_A"/>
 <contactref element="U$7" pad="P$25" route="any" routetag="OUT_A"/>
 <contactref element="U$7" pad="P$30" route="any" routetag="OUT_A"/>
@@ -4954,7 +4954,7 @@ design rules under a new name.</description>
 <vertex x="39.37" y="124.46"/>
 </polygon>
 </signal>
-<signal name="OUT1B" class="1">
+<signal name="OUT-4A" class="1">
 <contactref element="U$7" pad="P$15" route="any" routetag="OUT_B"/>
 <contactref element="U$7" pad="P$16" route="any" routetag="OUT_B"/>
 <contactref element="U$7" pad="P$21" route="any" routetag="OUT_B"/>
@@ -5009,7 +5009,7 @@ design rules under a new name.</description>
 <wire x1="111.76" y1="95.6056" x2="111.76" y2="95.57" width="0.2032" layer="1"/>
 <wire x1="106.7308" y1="95.6564" x2="106.68" y2="95.57" width="0.2032" layer="1"/>
 </signal>
-<signal name="OUT2A" class="1">
+<signal name="OUT-1B" class="1">
 <contactref element="U$8" pad="P$1" route="any" routetag="OUT_A"/>
 <contactref element="U$8" pad="P$25" route="any" routetag="OUT_A"/>
 <contactref element="U$8" pad="P$30" route="any" routetag="OUT_A"/>
@@ -5037,7 +5037,7 @@ design rules under a new name.</description>
 <vertex x="99.06" y="114.3"/>
 </polygon>
 </signal>
-<signal name="OUT2B" class="1">
+<signal name="OUT-1A" class="1">
 <contactref element="U$8" pad="P$15" route="any" routetag="OUT_B"/>
 <contactref element="U$8" pad="P$16" route="any" routetag="OUT_B"/>
 <contactref element="U$8" pad="P$21" route="any" routetag="OUT_B"/>
@@ -5123,7 +5123,7 @@ design rules under a new name.</description>
 <wire x1="139.7" y1="91.1352" x2="139.7" y2="91.12" width="0.2032" layer="1"/>
 <wire x1="134.6708" y1="91.1352" x2="134.62" y2="91.12" width="0.2032" layer="1"/>
 </signal>
-<signal name="OUT3A" class="1">
+<signal name="OUT-0B" class="1">
 <contactref element="U$9" pad="P$1" route="any" routetag="OUT_A"/>
 <contactref element="U$9" pad="P$25" route="any" routetag="OUT_A"/>
 <contactref element="U$9" pad="P$30" route="any" routetag="OUT_A"/>
@@ -5151,7 +5151,7 @@ design rules under a new name.</description>
 <vertex x="121.92" y="114.3"/>
 </polygon>
 </signal>
-<signal name="OUT3B" class="1">
+<signal name="OUT-0A" class="1">
 <contactref element="U$9" pad="P$15" route="any" routetag="OUT_B"/>
 <contactref element="U$9" pad="P$16" route="any" routetag="OUT_B"/>
 <contactref element="U$9" pad="P$21" route="any" routetag="OUT_B"/>
@@ -5209,7 +5209,7 @@ design rules under a new name.</description>
 <wire x1="66.04" y1="95.6056" x2="66.04" y2="95.57" width="0.2032" layer="1"/>
 <wire x1="61.0108" y1="95.6564" x2="60.96" y2="95.57" width="0.2032" layer="1"/>
 </signal>
-<signal name="OUT4A" class="1">
+<signal name="OUT-3B" class="1">
 <contactref element="U$10" pad="P$1" route="any" routetag="OUT_A"/>
 <contactref element="U$10" pad="P$25" route="any" routetag="OUT_A"/>
 <contactref element="U$10" pad="P$30" route="any" routetag="OUT_A"/>
@@ -5237,7 +5237,7 @@ design rules under a new name.</description>
 <vertex x="62.23" y="124.46"/>
 </polygon>
 </signal>
-<signal name="OUT4B" class="1">
+<signal name="OUT-3A" class="1">
 <contactref element="U$10" pad="P$15" route="any" routetag="OUT_B"/>
 <contactref element="U$10" pad="P$16" route="any" routetag="OUT_B"/>
 <contactref element="U$10" pad="P$21" route="any" routetag="OUT_B"/>
@@ -5323,7 +5323,7 @@ design rules under a new name.</description>
 <wire x1="93.98" y1="91.1352" x2="93.98" y2="91.12" width="0.2032" layer="1"/>
 <wire x1="88.9508" y1="91.1352" x2="88.9" y2="91.12" width="0.2032" layer="1"/>
 </signal>
-<signal name="OUT5A" class="1">
+<signal name="OUT-2B" class="1">
 <contactref element="U$11" pad="P$1" route="any" routetag="OUT_A"/>
 <contactref element="U$11" pad="P$25" route="any" routetag="OUT_A"/>
 <contactref element="U$11" pad="P$30" route="any" routetag="OUT_A"/>
@@ -5351,7 +5351,7 @@ design rules under a new name.</description>
 <vertex x="76.2" y="124.46"/>
 </polygon>
 </signal>
-<signal name="OUT5B" class="1">
+<signal name="OUT-2A" class="1">
 <contactref element="U$11" pad="P$15" route="any" routetag="OUT_B"/>
 <contactref element="U$11" pad="P$16" route="any" routetag="OUT_B"/>
 <contactref element="U$11" pad="P$21" route="any" routetag="OUT_B"/>
