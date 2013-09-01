@@ -147,6 +147,7 @@ report_ch:
     mov r24, 0                          // reset r24
 
     MOV R31.b0, PRU0_ARM_INTERRUPT+16   // Send interrupt to cortex-a8
+skip_report:
     jmp outer_loop                      // back to loop
 HALT
 
