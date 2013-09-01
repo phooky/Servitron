@@ -11,7 +11,7 @@ int main() {
           cout << r.cycles;
           cout << "]: ";
 	  for (int j = 0; j < 6; j++) {
-		  cout << j << ":" << r.state[j].position << " ";
+		  cout << j << ":" << r.channel[j].position << " ";
 	  }
 	  cout << endl;
   }
