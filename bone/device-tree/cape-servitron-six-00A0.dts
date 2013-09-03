@@ -27,6 +27,7 @@
         "P8.13",
         /* Enable and direction pins */
         /* Brake */
+        "P8.35",
         /* Estop/power */
         /* Endstops */
         /* Hardware IP cores in use */
@@ -44,6 +45,12 @@
                     0x020 0x4 // P8.19 - pwm2a - gpmc_ad8
                     0x024 0x4 // P8.13 - pwm2b - gpmc_ad9
                 >;
+            };
+            brake_pins: pinmux_brake_pins{
+                pinctrl-single,pins = <
+                    // Mode is 0x0f: input off, pullup off
+                    0x0d0 0xf // P8.35 - BRAKE - lcd_data12     GPIO0_8
+                >'
             };
             pruicss_quad_pins: pinmux_pruicss_quad_pins{
                 pinctrl-single,pins = <
@@ -152,5 +159,18 @@
     fragment@7 {
         target = <&ehrpwm2>;
         __overlay__ { status = "okay"; };
+    };
+    
+    // Brake pin
+    fragment@8 {
+        target = <&gpio-leds>;
+        __overlay__ {
+            pinctrl-0 = <&brake_pins>;
+            brake {
+                label = "servitron:brake";
+                gpios = <&gpio1 8 0>;
+                default-state = "off";
+            };
+        };
     };
 };
