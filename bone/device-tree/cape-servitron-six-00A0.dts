@@ -26,8 +26,10 @@
         "P8.19",
         "P8.13",
         /* Enable and direction pins */
+        "P8.35", // M_EN (active low)
+
         /* Brake */
-        "P8.35",
+        "P8.33",
         /* Estop/power */
         /* Endstops */
         /* Hardware IP cores in use */
@@ -50,6 +52,36 @@
                 pinctrl-single,pins = <
                     // Mode is 0x0f: input off, pullup off
                     0x0d4 0xf // P8.33 - BRAKE - lcd_data13     GPIO0_9
+                >;
+            };
+            motor_pins: pinmux_motor_pins{
+                pinctrl-single,pins = <
+                    // Mode is 0x0f: input off, pullup off
+                    0x0d0 0xf // P8.35 - M_EN - lcd_data12      GPIO0_8
+                    // M0
+                    0x15c 0xf // P9.17 - M0_A  - spi0_cs0       GPIO0_5
+                    0x040 0xf // P9.15 - M0_B  - gpmc_a0        GPIO1_16
+                    0x158 0xf // P9.18 - M0_EN - spi0_d1        GPIO0_4
+                    // M1
+                    0x074 0xf // P9.13 - M1_A  - gpmc_wpn       GPIO0_31
+                    0x070 0xf // P9.11 - M1_B  - gpmc_wait0     GPIO0_30
+                    0x078 0xf // P9.12 - M1_EN - gpmc_ben1      GPIO1_28
+                    // M2
+                    0x180 0xf // P9.26 - M2_A  - uart1_rxd      GPIO0_14
+                    0x184 0xf // P9.24 - M2_B  - uart1_txd      GPIO0_15
+                    0x198 0xf // P9.30 - M2_EN - mcasp0_axr0    GPIO3_16
+                    // M3
+                    0x1a4 0xf // P9.27 - M3_A  - mcasp0_fsr     GPIO3_19
+                    0x044 0xf // P9.23 - M3_B  - gpmc_a1        GPIO1_17
+                    0x194 0xf // P9.29 - M3_EN - mcasp0_fsx     GPIO3_15
+                    // M4
+                    0x038 0xf // P8.16 - M4_A  - gpmc_ad14      GPIO1_14
+                    0x028 0xf // P8.14 - M4_B  - gpmc_ad10      GPIO0_26
+                    0x030 0xf // P8.12 - M4_EN - gpmc_ad12      GPIO1_12
+                    // M5
+                    0x034 0xf // P8.11 - M5_A  - gpmc_ad13      GPIO1_13
+                    0x03c 0xf // P8.15 - M5_B  - gpmc_ad15      GPIO1_15
+                    0x02c 0xf // P8.17 - M5_EN - gpmc_ad11      GPIO0_27
                 >;
             };
             pruicss_quad_pins: pinmux_pruicss_quad_pins{
@@ -165,6 +197,40 @@
     fragment@8 {
         target = <&ocp>;
         __overlay__ {
+            motors {
+                compatible = "gpio-leds";
+                pinctrl-names = "default";
+                pinctrl-0 = <&motor_pins>;
+                m_en {
+                    label = "servitron:m_en";
+                    gpios = <&gpio1 8 0>;
+                    default-state = "on"; // active low
+                };
+                m0_a { label = "servitron:m0_a"; gpios = <&gpio1 5 0>; default-state = "off"; };
+                m0_b { label = "servitron:m0_b"; gpios = <&gpio2 16 0>; default-state = "off"; };
+                m0_en { label = "servitron:m0_en"; gpios = <&gpio1 4 0>; default-state = "off"; };
+
+                m1_a { label = "servitron:m1_a"; gpios = <&gpio1 31 0>; default-state = "off"; };
+                m1_b { label = "servitron:m1_b"; gpios = <&gpio1 30 0>; default-state = "off"; };
+                m1_en { label = "servitron:m1_en"; gpios = <&gpio2 28 0>; default-state = "off"; };
+
+                m2_a { label = "servitron:m2_a"; gpios = <&gpio1 14 0>; default-state = "off"; };
+                m2_b { label = "servitron:m2_b"; gpios = <&gpio1 15 0>; default-state = "off"; };
+                m2_en { label = "servitron:m2_en"; gpios = <&gpio4 16 0>; default-state = "off"; };
+
+                m3_a { label = "servitron:m3_a"; gpios = <&gpio4 19 0>; default-state = "off"; };
+                m3_b { label = "servitron:m3_b"; gpios = <&gpio2 17 0>; default-state = "off"; };
+                m3_en { label = "servitron:m3_en"; gpios = <&gpio4 15 0>; default-state = "off"; };
+
+                m4_a { label = "servitron:m4_a"; gpios = <&gpio2 14 0>; default-state = "off"; };
+                m4_b { label = "servitron:m4_b"; gpios = <&gpio1 26 0>; default-state = "off"; };
+                m4_en { label = "servitron:m4_en"; gpios = <&gpio2 12 0>; default-state = "off"; };
+
+                m5_a { label = "servitron:m5_a"; gpios = <&gpio2 13 0>; default-state = "off"; };
+                m5_b { label = "servitron:m5_b"; gpios = <&gpio2 15 0>; default-state = "off"; };
+                m5_en { label = "servitron:m5_en"; gpios = <&gpio1 27 0>; default-state = "off"; };
+            };
+
             brake {
                 compatible = "gpio-leds";
                 pinctrl-names = "default";
@@ -172,7 +238,7 @@
                 brake {
                     label = "servitron:brake";
                     gpios = <&gpio1 9 0>;
-                    default-state = "off";
+                    default-state = "on";
                 };
             };
         };
