@@ -48,11 +48,11 @@
         target = <&am33xx_pinmux>;
         __overlay__ {
             pwm0a_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x150 0x3 >; }; // P9.22 - pwm0a - spi0_sclk
-            pwm0b_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x154 0x3 >; }; // P9.21 - pwm0b - spi0_d0
-            pwm1a_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x048 0x6 >; }; // P9.14 - pwm1a - gpmc_a2
-            pwm1b_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x04c 0x6 >; }; // P9.16 - pwm1b - gpmc_a3
-            pwm2a_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x020 0x4 >; }; // P8.19 - pwm2a - gpmc_ad8
-            pwm2b_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x024 0x4 >; }; // P8.13 - pwm2b - gpmc_ad9
+            pwm0b_pin: pinmux_pwm0b_pin { pinctrl-single,pins = < 0x154 0x3 >; }; // P9.21 - pwm0b - spi0_d0
+            pwm1a_pin: pinmux_pwm1a_pin { pinctrl-single,pins = < 0x048 0x6 >; }; // P9.14 - pwm1a - gpmc_a2
+            pwm1b_pin: pinmux_pwm1b_pin { pinctrl-single,pins = < 0x04c 0x6 >; }; // P9.16 - pwm1b - gpmc_a3
+            pwm2a_pin: pinmux_pwm2a_pin { pinctrl-single,pins = < 0x020 0x4 >; }; // P8.19 - pwm2a - gpmc_ad8
+            pwm2b_pin: pinmux_pwm2b_pin { pinctrl-single,pins = < 0x024 0x4 >; }; // P8.13 - pwm2b - gpmc_ad9
             brake_pins: pinmux_brake_pins{
                 pinctrl-single,pins = <
                     // Mode is 0x0f: input off, pullup off
