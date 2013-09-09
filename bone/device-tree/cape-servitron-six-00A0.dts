@@ -27,27 +27,32 @@
         "P8.13",
         /* Enable and direction pins */
         "P8.35", // M_EN (active low)
-
+        "P9.11", "P9.12", "P9.13",
+        "P9.15", "P9.17", "P9.18",
+        "P9.23", "P9.24", "P9.26",
+        "P9.27", "P9.29", "P9.30",
+        "P8.12", "P8.14", "P8.16",
+        "P8.11", "P8.15", "P8.17",
         /* Brake */
         "P8.33",
-        /* Estop/power */
-        /* Endstops */
         /* Hardware IP cores in use */
+        "ehrpwm0A",
+        "ehrpwm0B",
+        "ehrpwm1A",
+        "ehrpwm1B",
+        "ehrpwm2A",
+        "ehrpwm2B",
         "pruss"; 
 
     fragment@0 {
         target = <&am33xx_pinmux>;
         __overlay__ {
-            motor_pwm_pins: pinmux_motor_pwm_pins{
-                pinctrl-single,pins = <
-                    0x150 0x3 // P9.22 - pwm0a - spi0_sclk
-                    0x154 0x3 // P9.21 - pwm0b - spi0_d0
-                    0x048 0x6 // P9.14 - pwm1a - gpmc_a2
-                    0x04c 0x6 // P9.16 - pwm1b - gpmc_a3
-                    0x020 0x4 // P8.19 - pwm2a - gpmc_ad8
-                    0x024 0x4 // P8.13 - pwm2b - gpmc_ad9
-                >;
-            };
+            pwm0a_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x150 0x3 >; }; // P9.22 - pwm0a - spi0_sclk
+            pwm0b_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x154 0x3 >; }; // P9.21 - pwm0b - spi0_d0
+            pwm1a_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x048 0x6 >; }; // P9.14 - pwm1a - gpmc_a2
+            pwm1b_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x04c 0x6 >; }; // P9.16 - pwm1b - gpmc_a3
+            pwm2a_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x020 0x4 >; }; // P8.19 - pwm2a - gpmc_ad8
+            pwm2b_pin: pinmux_pwm0a_pin { pinctrl-single,pins = < 0x024 0x4 >; }; // P8.13 - pwm2b - gpmc_ad9
             brake_pins: pinmux_brake_pins{
                 pinctrl-single,pins = <
                     // Mode is 0x0f: input off, pullup off
@@ -229,6 +234,69 @@
                 m5_a { label = "servitron:m5_a"; gpios = <&gpio2 13 0>; default-state = "off"; };
                 m5_b { label = "servitron:m5_b"; gpios = <&gpio2 15 0>; default-state = "off"; };
                 m5_en { label = "servitron:m5_en"; gpios = <&gpio1 27 0>; default-state = "off"; };
+            };
+
+            motor_pwm0a {
+                compatible = "pwm_test";
+                pinctrl-names = "default";
+                pinctrl-0 = <&pwm0a_pin>;
+                pwms = <&ehrpwm0 0 500000 1>;
+                pwm-names = "motor_pwm0a";
+		enabled = <1>;
+                duty = <0>;
+		status = "okay";
+            };
+            motor_pwm0b {
+                compatible = "pwm_test";
+                pinctrl-names = "default";
+                pinctrl-0 = <&pwm0b_pin>;
+                pwms = <&ehrpwm0 1 500000 1>;
+                pwm-names = "motor_pwm0b";
+		enabled = <1>;
+                duty = <0>;
+		status = "okay";
+            };
+
+            motor_pwm1a {
+                compatible = "pwm_test";
+                pinctrl-names = "default";
+                pinctrl-0 = <&pwm1a_pin>;
+                pwms = <&ehrpwm1 0 500000 1>;
+                pwm-names = "motor_pwm1a";
+		enabled = <1>;
+                duty = <0>;
+		status = "okay";
+            };
+            motor_pwm1b {
+                compatible = "pwm_test";
+                pinctrl-names = "default";
+                pinctrl-0 = <&pwm1b_pin>;
+                pwms = <&ehrpwm1 1 500000 1>;
+                pwm-names = "motor_pwm1b";
+		enabled = <1>;
+                duty = <0>;
+		status = "okay";
+            };
+
+            motor_pwm2a {
+                compatible = "pwm_test";
+                pinctrl-names = "default";
+                pinctrl-0 = <&pwm2a_pin>;
+                pwms = <&ehrpwm2 0 500000 1>;
+                pwm-names = "motor_pwm2a";
+		enabled = <1>;
+                duty = <0>;
+		status = "okay";
+            };
+            motor_pwm2b {
+                compatible = "pwm_test";
+                pinctrl-names = "default";
+                pinctrl-0 = <&pwm2b_pin>;
+                pwms = <&ehrpwm2 1 500000 1>;
+                pwm-names = "motor_pwm2b";
+		enabled = <1>;
+                duty = <0>;
+		status = "okay";
             };
 
             brake {
