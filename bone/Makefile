@@ -44,10 +44,10 @@ pwm_test: pwm_test.o pwm.o util.o
 quad_test: quad_test.o quadrature.o util.o
 	$(GPP) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-motor_test: motor_test.o motor.o util.o
+motor_test: motor_test.o motor.o util.o brake.o
 	$(GPP) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-servo_test: servo_test.o servo.o pid.o motor.o util.o quadrature.o
+servo_test: servo_test.o servo.o pid.o motor.o brake.o util.o quadrature.o
 	$(GPP) $(CFLAGS) -o $@ $^ $(LDFLAGS) -lm
 
 brake_test: brake_test.o brake.o util.o
