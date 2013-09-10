@@ -47,27 +47,27 @@ public:
 
 Motors::Motors() : m_en(enable_pin)
 {
-  m_impl[2] = new MotorImpl("servitron:m0_a",
+  m_impl[0] = new MotorImpl("servitron:m0_a",
                             "servitron:m0_b",
                             "servitron:m0_en",
-                            "motor_pwm0a.12");
-  m_impl[3] = new MotorImpl("servitron:m1_a",
+                            "motor_pwm1b.15");
+  m_impl[1] = new MotorImpl("servitron:m1_a",
                             "servitron:m1_b",
                             "servitron:m1_en",
-                            "motor_pwm0b.13");
-  m_impl[4] = new MotorImpl("servitron:m2_a",
+                            "motor_pwm1a.14");
+  m_impl[2] = new MotorImpl("servitron:m2_a",
                             "servitron:m2_b",
                             "servitron:m2_en",
-                            "motor_pwm1a.14");
-  m_impl[5] = new MotorImpl("servitron:m3_a",
+                            "motor_pwm0b.13");
+  m_impl[3] = new MotorImpl("servitron:m3_a",
                             "servitron:m3_b",
                             "servitron:m3_en",
-                            "motor_pwm1b.15");
-  m_impl[1] = new MotorImpl("servitron:m4_a",
+                            "motor_pwm0a.12");
+  m_impl[4] = new MotorImpl("servitron:m4_a",
                             "servitron:m4_b",
                             "servitron:m4_en",
                             "motor_pwm2a.16");
-  m_impl[0] = new MotorImpl("servitron:m5_a",
+  m_impl[5] = new MotorImpl("servitron:m5_a",
                             "servitron:m5_b",
                             "servitron:m5_en",
                             "motor_pwm2b.17");
