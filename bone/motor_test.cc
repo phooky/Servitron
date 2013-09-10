@@ -1,6 +1,7 @@
 #include "motor.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include "brake.h"
 
 void testMotor(int idx,Motors& m) {
   m.setPower(idx,5000);
@@ -11,6 +12,8 @@ void testMotor(int idx,Motors& m) {
 }
 
 int main(int argc, char** argv) {
+  Brake b;
+  b.setBrake(false);
   Motors m;
   if (argc < 2) {
     testMotor(0,m);
@@ -22,4 +25,5 @@ int main(int argc, char** argv) {
       }
     }
   }
+  b.setBrake(true);
 }
