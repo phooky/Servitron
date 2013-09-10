@@ -1,5 +1,4 @@
-#include <string>
-#include <fstream>
+#include "util.h"
 
 bool writePath(std::string path, int value, bool hex) {
   std::ofstream outf;
@@ -9,3 +8,20 @@ bool writePath(std::string path, int value, bool hex) {
   outf.close();
   return true;
 }
+
+const std::string led_prefix = "/sys/class/leds/";
+const std::string led_suffix = "/brightness";
+
+LedOut::LedOut(std::string& name) : m_name(name) {
+  std::string full_name = led_prefix + name + led_suffix;
+  m_outf.open(full_name.c_str());
+}
+
+void LedOut::set(int value) {
+  m_outf << value << std::endl;
+}
+
+LedOut::~LedOut() {
+  m_outf.close();
+}
+

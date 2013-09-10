@@ -2,11 +2,11 @@
 #define BRAKE_H
 
 #include <stdint.h>
+#include "util.h"
 
 class Brake {
 private:
-  uint8_t* gpioMap;
-  int gpioFd;
+  LedOut m_brake_gpio;
 public:
   Brake();
 
