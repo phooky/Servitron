@@ -24,7 +24,7 @@ CFLAGS+= -Wall -I$(INCDIR_APP_LOADER) -D__DEBUG -O2
 LDFLAGS+=-L$(LIBDIR_APP_LOADER) -lprussdrv -lpthread
 
 
-TARGETS=quad.bin quad_test brake_test #motor_test pwm_test quad_test servo_test quad.bin
+TARGETS=quad.bin quad_test brake_test motor_test #pwm_test quad_test servo_test quad.bin
 BIN=
 
 all: $(TARGETS) $(BIN)
