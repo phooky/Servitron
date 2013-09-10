@@ -9,7 +9,7 @@ bool writePath(std::string path, int value, bool hex = true);
 class LedOut {
 public:
   const std::string m_name;
-  LedOut(std::string& name);
+  LedOut(const std::string& name);
   void set(int value);
   ~LedOut();
 private:

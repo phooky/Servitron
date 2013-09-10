@@ -12,7 +12,7 @@ bool writePath(std::string path, int value, bool hex) {
 const std::string led_prefix = "/sys/class/leds/";
 const std::string led_suffix = "/brightness";
 
-LedOut::LedOut(std::string& name) : m_name(name) {
+LedOut::LedOut(const std::string& name) : m_name(name) {
   std::string full_name = led_prefix + name + led_suffix;
   m_outf.open(full_name.c_str());
 }
