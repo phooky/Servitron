@@ -13,7 +13,7 @@ public:
   // Set the motor to the specified
   // power. 0 is off. Negative values are CCW, positive
   // are CW.
-  void setPower(int channel, int value = 0);
+  void setPower(int channel, float value = 0.0);
 private:
   LedOut m_en;
   MotorImpl* m_impl[6];

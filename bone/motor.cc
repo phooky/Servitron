@@ -23,7 +23,12 @@ public:
   ~MotorImpl() {
     m_duty_stream.close();
   }
-  void setPower(int value) {
+  void setPower(float v) {
+    if (v>1.0) v=1.0;
+    if (v<-1.0) v=-1.0;
+
+    int value = (int)(v * 200000.0);
+
     m_en.set((value == 0)?0:1);
     
     if (value > 0) {
@@ -91,7 +96,7 @@ void Motors::enable(bool en) {
 // Set the motor to the specified
 // power. 0 is off. Negative values are CCW, positive
 // are CW.
-void Motors::setPower(int channel, int value) {
+void Motors::setPower(int channel, float value) {
   m_impl[channel]->setPower(value);
 }
     

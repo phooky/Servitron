@@ -4,9 +4,9 @@
 #include "brake.h"
 
 void testMotor(int idx,Motors& m) {
-  m.setPower(idx,100000);
+  m.setPower(idx,0.33);
   sleep(1);
-  m.setPower(idx,-100000);
+  m.setPower(idx,-0.33);
   sleep(1);
   m.setPower(idx,0);
 }
