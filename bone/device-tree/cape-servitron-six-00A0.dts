@@ -240,7 +240,7 @@
                 compatible = "pwm_test";
                 pinctrl-names = "default";
                 pinctrl-0 = <&pwm0a_pin>;
-                pwms = <&ehrpwm0 0 500000 0>;
+                pwms = <&ehrpwm0 0 200000 0>;
                 pwm-names = "motor_pwm0a";
 		enabled = <1>;
                 duty = <0>;
@@ -250,7 +250,7 @@
                 compatible = "pwm_test";
                 pinctrl-names = "default";
                 pinctrl-0 = <&pwm0b_pin>;
-                pwms = <&ehrpwm0 1 500000 0>;
+                pwms = <&ehrpwm0 1 200000 0>;
                 pwm-names = "motor_pwm0b";
 		enabled = <1>;
                 duty = <0>;
@@ -261,7 +261,7 @@
                 compatible = "pwm_test";
                 pinctrl-names = "default";
                 pinctrl-0 = <&pwm1a_pin>;
-                pwms = <&ehrpwm1 0 500000 0>;
+                pwms = <&ehrpwm1 0 200000 0>;
                 pwm-names = "motor_pwm1a";
 		enabled = <1>;
                 duty = <0>;
@@ -271,7 +271,7 @@
                 compatible = "pwm_test";
                 pinctrl-names = "default";
                 pinctrl-0 = <&pwm1b_pin>;
-                pwms = <&ehrpwm1 1 500000 0>;
+                pwms = <&ehrpwm1 1 200000 0>;
                 pwm-names = "motor_pwm1b";
 		enabled = <1>;
                 duty = <0>;
@@ -282,7 +282,7 @@
                 compatible = "pwm_test";
                 pinctrl-names = "default";
                 pinctrl-0 = <&pwm2a_pin>;
-                pwms = <&ehrpwm2 0 500000 0>;
+                pwms = <&ehrpwm2 0 200000 0>;
                 pwm-names = "motor_pwm2a";
 		enabled = <1>;
                 duty = <0>;
@@ -292,7 +292,7 @@
                 compatible = "pwm_test";
                 pinctrl-names = "default";
                 pinctrl-0 = <&pwm2b_pin>;
-                pwms = <&ehrpwm2 1 500000 0>;
+                pwms = <&ehrpwm2 1 200000 0>;
                 pwm-names = "motor_pwm2b";
 		enabled = <1>;
                 duty = <0>;

@@ -1,7 +1,6 @@
 #ifndef SERVO_H
 #define SERVO_H
 
-#include "pid.h"
 #include "quadrature.h"
 #include "motor.h"
 
